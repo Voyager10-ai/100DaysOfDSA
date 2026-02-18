@@ -3,7 +3,6 @@
 Tracking my consistency and growth in problem solving.
 
 ## Progress
-- Day 1: Two Sum
 - Day 1 – Two Sum
 - Day 2 – Binary Search
 - Day 3 – Reverse Array
