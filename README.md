@@ -8,3 +8,4 @@ Tracking my consistency and growth in problem solving.
 - Day 3: Contains Duplicate
 - Day 4: Product of Array Except Self
 - Day 5: Maximum Subarray
+- Day 6: 
