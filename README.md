@@ -9,3 +9,4 @@ Tracking my consistency and growth in problem solving.
 - Day 4: Product of Array Except Self
 - Day 5: Maximum Subarray
 - Day 6: Maximum Product Subarray
+- Day 7: Find Minimum in Rotated Sorted Array
