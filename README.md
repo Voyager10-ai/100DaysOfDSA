@@ -11,3 +11,4 @@ Tracking my consistency and growth in problem solving.
 - Day 6: Maximum Product Subarray
 - Day 7: Find Minimum in Rotated Sorted Array
 - Day 8: Search in Rotated Sorted Array
+- Day 9: 3Sum
