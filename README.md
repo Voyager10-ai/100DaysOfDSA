@@ -12,3 +12,4 @@ Tracking my consistency and growth in problem solving.
 - Day 7: Find Minimum in Rotated Sorted Array
 - Day 8: Search in Rotated Sorted Array
 - Day 9: 3Sum. 
+- Day 10: Container With Most Water
