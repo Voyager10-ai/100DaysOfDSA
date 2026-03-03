@@ -14,4 +14,5 @@ Tracking my consistency and growth in problem solving.
 - Day 9: 3Sum. 
 - Day 10: Container With Most Water
 - Day 11: Next Permutation.
-- Day 12: Find the Duplicate Number
+- Day 12: Find the Duplicate Number.
+- 
