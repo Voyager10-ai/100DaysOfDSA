@@ -16,4 +16,6 @@ Tracking my consistency and growth in problem solving.
 - Day 11: Next Permutation.
 - Day 12: Find the Duplicate Number.
 - Day 13: Longest Substring Without Repeating Characters
+- Day 14: Longest Repeating Character Replacement
+- 
 - 
