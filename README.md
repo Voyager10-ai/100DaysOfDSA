@@ -28,4 +28,4 @@ Tracking my consistency and growth in problem solving.
 - Day 23: Linked List Cycle
 - Day 24: Merge Two Sorted Lists
 - Day 25: Merge k Sorted Lists
-- Day 26:
+- Day 26: Remove Nth Node From End of List
