@@ -5,6 +5,8 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is the length of string s2
+    // Space Complexity: O(1) since we use two vectors of constant size 26
     bool checkInclusion(string s1, string s2) {
         if (s1.length() > s2.length()) return false;
         
