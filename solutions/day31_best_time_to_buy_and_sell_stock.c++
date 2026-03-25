@@ -5,6 +5,8 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is the length of the prices array
+    // Space Complexity: O(1) since we are using only a few variables
     int maxProfit(vector<int>& prices) {
         int minPrice = prices[0];
         int maxPro = 0;
