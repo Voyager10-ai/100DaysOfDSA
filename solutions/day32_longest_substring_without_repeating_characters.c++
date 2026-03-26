@@ -6,6 +6,8 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is the length of the string s
+    // Space Complexity: O(1) or O(M) where M is the charset size (const 256)
     int lengthOfLongestSubstring(string s) {
         vector<int> charIndex(256, -1);
         int maxLength = 0;
