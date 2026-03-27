@@ -5,6 +5,8 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is the length of the string
+    // Space Complexity: O(N) in the worst case (all left parentheses)
     bool isValid(string s) {
         stack<char> st;
         
