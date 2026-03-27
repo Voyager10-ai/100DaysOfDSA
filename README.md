@@ -35,3 +35,4 @@ Tracking my consistency and growth in problem solving.
 - Day 30: Permutation in String
 - Day 31: Best Time to Buy and Sell Stock
 - Day 32: Longest Substring Without Repeating Characters
+- Day 33: Valid Parentheses
