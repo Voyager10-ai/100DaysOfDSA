@@ -28,8 +28,33 @@ public:
             s.pop();
         }
     }
+    
+    int top() {
+        if (!s.empty()) {
+            return s.top();
+        }
+        return -1;
+    }
+    
+    int getMin() {
+        if (!minStack.empty()) {
+            return minStack.top();
+        }
+        return -1;
+    }
 };
 
 int main() {
+    MinStack* obj = new MinStack();
+    obj->push(-2);
+    obj->push(0);
+    obj->push(-3);
+    cout << "Min: " << obj->getMin() << endl; // returns -3
+    
+    obj->pop();
+    cout << "Top: " << obj->top() << endl;    // returns 0
+    cout << "Min: " << obj->getMin() << endl; // returns -2
+    
+    delete obj;
     return 0;
 }
