@@ -12,6 +12,22 @@ public:
     MinStack() {
         
     }
+    
+    void push(int val) {
+        s.push(val);
+        if (minStack.empty() || val <= minStack.top()) {
+            minStack.push(val);
+        }
+    }
+    
+    void pop() {
+        if (!s.empty()) {
+            if (s.top() == minStack.top()) {
+                minStack.pop();
+            }
+            s.pop();
+        }
+    }
 };
 
 int main() {
