@@ -24,3 +24,17 @@ public:
         return st.top();
     }
 };
+
+int main() {
+    Solution sol;
+    vector<string> tokens1 = {"2", "1", "+", "3", "*"};
+    cout << "Result 1: " << sol.evalRPN(tokens1) << endl; // Output: 9
+    
+    vector<string> tokens2 = {"4", "13", "5", "/", "+"};
+    cout << "Result 2: " << sol.evalRPN(tokens2) << endl; // Output: 6
+    
+    vector<string> tokens3 = {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
+    cout << "Result 3: " << sol.evalRPN(tokens3) << endl; // Output: 22
+
+    return 0;
+}
