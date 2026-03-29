@@ -37,3 +37,4 @@ Tracking my consistency and growth in problem solving.
 - Day 32: Longest Substring Without Repeating Characters
 - Day 33: Valid Parentheses
 - Day 34: Min Stack
+- Day 35: Evaluate Reverse Polish Notation
