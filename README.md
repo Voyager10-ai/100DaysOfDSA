@@ -39,3 +39,4 @@ Tracking my consistency and growth in problem solving.
 - Day 34: Min Stack
 - Day 35: Evaluate Reverse Polish Notation
 - Day 36: Daily Temperatures
+- Day 37: Largest Rectangle in Histogram
