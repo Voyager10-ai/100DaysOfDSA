@@ -4,6 +4,18 @@
 
 using namespace std;
 
+/*
+ * Day 37: Largest Rectangle in Histogram
+ * 
+ * Approach:
+ * Using a monotonic increasing stack to store pairs of {index, height}.
+ * When we encounter a building with a height smaller than the top of the stack,
+ * we can no longer extend the rectangle of the top building. So we pop it,
+ * calculate its area, and continue. The width of the rectangle is determined
+ * by the difference between the current index and the index of the popped building.
+ * We also update the index of the current building to the index of the LAST
+ * popped building since the current building can extend backwards.
+ */
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
