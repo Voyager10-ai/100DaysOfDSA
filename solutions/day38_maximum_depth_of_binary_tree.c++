@@ -13,6 +13,16 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+/*
+ * Day 38: Maximum Depth of Binary Tree
+ * 
+ * Approach:
+ * Using a recursive approach to find the maximum depth of the binary tree.
+ * The depth of a node is 1 + the maximum depth of its left and right subtrees.
+ * The base case is when the tree is empty (root is nullptr), its depth is 0.
+ * Time Complexity: O(N) where N is the number of nodes in the tree.
+ * Space Complexity: O(H) where H is the height of the tree (for the recursion stack).
+ */
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
