@@ -12,6 +12,18 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+/*
+ * Day 39: Same Tree
+ * 
+ * Approach:
+ * Using a recursive approach to perform a simultaneous traversal of both trees.
+ * - If both nodes are null, they are identical up to this point.
+ * - If only one node is null, or if their values differ, they are not identical.
+ * - If their values match, recursively check the left subtree and the right subtree.
+ * 
+ * Time Complexity: O(min(N, M)) where N and M are the number of nodes in trees p and q respectively.
+ * Space Complexity: O(min(H1, H2)) where H1 and H2 are the heights of the trees, due to recursion stack.
+ */
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
