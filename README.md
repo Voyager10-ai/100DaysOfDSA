@@ -41,3 +41,4 @@ Tracking my consistency and growth in problem solving.
 - Day 36: Daily Temperatures
 - Day 37: Largest Rectangle in Histogram
 - Day 38: Maximum Depth of Binary Tree
+- Day 39: Same Tree
