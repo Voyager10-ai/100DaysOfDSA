@@ -11,6 +11,18 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+/*
+ * Day 40: Invert Binary Tree
+ *
+ * Approach:
+ * Using a recursive approach (DFS) to invert the tree.
+ * At every node, we swap its left and right children, then
+ * recursively invert the left and right subtrees.
+ * The base case is a null node — we simply return nullptr.
+ *
+ * Time Complexity:  O(N) — every node is visited exactly once.
+ * Space Complexity: O(H) — recursion stack uses height of tree; O(log N) average, O(N) worst case.
+ */
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
