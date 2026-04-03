@@ -42,3 +42,4 @@ Tracking my consistency and growth in problem solving.
 - Day 37: Largest Rectangle in Histogram
 - Day 38: Maximum Depth of Binary Tree
 - Day 39: Same Tree
+- Day 40: Invert Binary Tree
