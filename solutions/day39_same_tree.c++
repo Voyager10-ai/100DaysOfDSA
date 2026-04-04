@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 // Definition for a binary tree node.
@@ -12,7 +11,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-/*
+/*day 
  * Day 39: Same Tree
  * 
  * Approach:
