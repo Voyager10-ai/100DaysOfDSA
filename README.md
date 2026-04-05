@@ -43,3 +43,5 @@ Tracking my consistency and growth in problem solving.
 - Day 38: Maximum Depth of Binary Tree
 - Day 39: Same Tree
 - Day 40: Invert Binary Tree
+- Day 41: Subtree of Another Tree
+- Day 42: Binary Tree Level Order Traversal
