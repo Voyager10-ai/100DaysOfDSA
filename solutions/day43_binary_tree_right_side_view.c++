@@ -14,6 +14,19 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+/*
+ * Day 43: Binary Tree Right Side View
+ *
+ * Approach:
+ * We perform a Level Order Traversal (BFS) using a queue.
+ * For each level in the tree, we iterate through all its nodes.
+ * The last node encountered in each level (when `i == size - 1`) 
+ * represents the rightmost node visible from the right side.
+ * We add this node's value to our result array.
+ *
+ * Time Complexity:  O(N) — Every node is visited exactly once.
+ * Space Complexity: O(D) — Where D is the maximum width of the tree, usually O(N/2) = O(N) max.
+ */
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
