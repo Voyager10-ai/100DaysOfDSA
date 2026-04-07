@@ -13,6 +13,18 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+/*
+ * Day 44: Diameter of Binary Tree
+ *
+ * Approach:
+ * We use a recursive Depth First Search (DFS) or post-order traversal to calculate the
+ * height of each node. During the traversal, the diameter passing through a node is simply
+ * the sum of the maximum heights of its left and right subtrees.
+ * We maintain a global or member variable to track the maximum diameter found so far.
+ *
+ * Time Complexity:  O(N) — since we visit every node exactly once.
+ * Space Complexity: O(H) — due to the recurrence stack, where H is the height of the tree.
+ */
 class Solution {
 public:
     int diameter = 0;
