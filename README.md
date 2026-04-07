@@ -46,3 +46,5 @@ Tracking my consistency and growth in problem solving.
 - Day 41: Subtree of Another Tree
 - Day 42: Binary Tree Level Order Traversal
 - Day 43: Binary Tree Right Side View
+- Day 44: Diameter of Binary Tree
+
