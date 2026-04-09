@@ -13,7 +13,22 @@ struct TreeNode {
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        // TODO: Implement validation logic
-        return true;
+        return validate(root, nullptr, nullptr);
+    }
+
+private:
+    bool validate(TreeNode* node, TreeNode* low, TreeNode* high) {
+        if (!node) {
+            return true;
+        }
+        
+        // Check if current node violates the min/max constraint
+        if ((low && node->val <= low->val) || (high && node->val >= high->val)) {
+            return false;
+        }
+        
+        // Validates left and right subtrees
+        return validate(node->left, low, node) && 
+               validate(node->right, node, high);
     }
 };
