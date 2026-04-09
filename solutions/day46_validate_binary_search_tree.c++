@@ -32,3 +32,32 @@ private:
                validate(node->right, node, high);
     }
 };
+
+int main() {
+    // Example 1: a valid BST
+    //      2
+    //     / \
+    //    1   3
+    TreeNode* root1 = new TreeNode(2);
+    root1->left = new TreeNode(1);
+    root1->right = new TreeNode(3);
+
+    Solution sol;
+    cout << "Example 1 isValidBST: " << (sol.isValidBST(root1) ? "true" : "false") << endl;
+
+    // Example 2: an invalid BST
+    //      5
+    //     / \
+    //    1   4
+    //       / \
+    //      3   6
+    TreeNode* root2 = new TreeNode(5);
+    root2->left = new TreeNode(1);
+    root2->right = new TreeNode(4);
+    root2->right->left = new TreeNode(3);
+    root2->right->right = new TreeNode(6);
+
+    cout << "Example 2 isValidBST: " << (sol.isValidBST(root2) ? "true" : "false") << endl;
+
+    return 0;
+}
