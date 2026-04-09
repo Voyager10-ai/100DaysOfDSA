@@ -12,6 +12,8 @@ struct TreeNode {
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is the number of nodes in the BST.
+    // Space Complexity: O(H) where H is the height of the BST due to recursion stack.
     bool isValidBST(TreeNode* root) {
         return validate(root, nullptr, nullptr);
     }
