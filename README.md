@@ -49,4 +49,5 @@ Tracking my consistency and growth in problem solving.
 - Day 44: Diameter of Binary Tree
 - Day 45: Lowest Common Ancestor of a Binary Search Tree
 - Day 46: Validate Binary Search Tree
+- Day 47: Kth Smallest Element in a BST
 
