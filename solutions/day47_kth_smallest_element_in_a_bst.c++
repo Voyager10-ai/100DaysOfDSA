@@ -11,9 +11,27 @@ struct TreeNode {
 };
 
 class Solution {
+private:
+    int count = 0;
+    int result = 0;
+
+    void inOrder(TreeNode* node, int k) {
+        if (!node || count >= k) return;
+        
+        inOrder(node->left, k);
+        
+        count++;
+        if (count == k) {
+            result = node->val;
+            return;
+        }
+        
+        inOrder(node->right, k);
+    }
+    
 public:
     int kthSmallest(TreeNode* root, int k) {
-        // TODO: Implement Kth Smallest Element logic
-        return 0;
+        inOrder(root, k);
+        return result;
     }
 };
