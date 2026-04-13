@@ -44,3 +44,32 @@ public:
         return build(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1, inMap);
     }
 };
+
+void printInorder(TreeNode* node) {
+    if (node == NULL) return;
+    printInorder(node->left);
+    cout << node->val << " ";
+    printInorder(node->right);
+}
+
+int main() {
+    Solution sol;
+    
+    // Example 1
+    vector<int> preorder1 = {3, 9, 20, 15, 7};
+    vector<int> inorder1 = {9, 3, 15, 20, 7};
+    TreeNode* root1 = sol.buildTree(preorder1, inorder1);
+    cout << "Inorder of constructed tree 1: ";
+    printInorder(root1); // Output should be 9 3 15 20 7
+    cout << endl;
+    
+    // Example 2
+    vector<int> preorder2 = {-1};
+    vector<int> inorder2 = {-1};
+    TreeNode* root2 = sol.buildTree(preorder2, inorder2);
+    cout << "Inorder of constructed tree 2: ";
+    printInorder(root2); // Output should be -1
+    cout << endl;
+    
+    return 0;
+}
