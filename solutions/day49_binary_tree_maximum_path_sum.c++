@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -12,9 +13,21 @@ struct TreeNode {
 };
 
 class Solution {
+    int maxPathDown(TreeNode* node, int& maxValue) {
+        if (node == NULL) return 0;
+        
+        int left = max(0, maxPathDown(node->left, maxValue));
+        int right = max(0, maxPathDown(node->right, maxValue));
+        
+        maxValue = max(maxValue, left + right + node->val);
+        
+        return max(left, right) + node->val;
+    }
+    
 public:
     int maxPathSum(TreeNode* root) {
-        // Implementation will be added here
-        return 0;
+        int maxValue = INT_MIN;
+        maxPathDown(root, maxValue);
+        return maxValue;
     }
 };
