@@ -51,5 +51,5 @@ Tracking my consistency and growth in problem solving.
 - Day 46: Validate Binary Search Tree
 - Day 47: Kth Smallest Element in a BST
 - Day 48: Construct Binary Tree from Preorder and Inorder Traversal
-
+- Day 49: Binary Tree Maximum Path Sum
 
