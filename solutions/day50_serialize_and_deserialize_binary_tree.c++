@@ -70,3 +70,39 @@ public:
         return root;
     }
 };
+
+void printPreorder(TreeNode* node) {
+    if (!node) {
+        cout << "null ";
+        return;
+    }
+    cout << node->val << " ";
+    printPreorder(node->left);
+    printPreorder(node->right);
+}
+
+int main() {
+    Codec ser, deser;
+    
+    // Example 1
+    //      1
+    //     / \
+    //    2   3
+    //       / \
+    //      4   5
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->right->left = new TreeNode(4);
+    root->right->right = new TreeNode(5);
+    
+    string serialized_data = ser.serialize(root);
+    cout << "Serialized data: " << serialized_data << endl;
+    
+    TreeNode* deserialized_root = deser.deserialize(serialized_data);
+    cout << "Preorder of deserialized tree: ";
+    printPreorder(deserialized_root);
+    cout << endl;
+    
+    return 0;
+}
