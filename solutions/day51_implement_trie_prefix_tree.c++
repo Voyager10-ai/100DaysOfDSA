@@ -60,3 +60,17 @@ public:
         return true;
     }
 };
+
+int main() {
+    Trie* trie = new Trie();
+    
+    trie->insert("apple");
+    cout << "search(\"apple\"): " << (trie->search("apple") ? "true" : "false") << endl;   // return True
+    cout << "search(\"app\"): " << (trie->search("app") ? "true" : "false") << endl;     // return False
+    cout << "startsWith(\"app\"): " << (trie->startsWith("app") ? "true" : "false") << endl; // return True
+    trie->insert("app");
+    cout << "search(\"app\"): " << (trie->search("app") ? "true" : "false") << endl;     // return True
+    
+    delete trie;
+    return 0;
+}
