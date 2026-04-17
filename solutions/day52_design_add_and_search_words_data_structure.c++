@@ -16,3 +16,14 @@ public:
         }
     }
 };
+
+class WordDictionary {
+private:
+    TrieNode* root;
+
+public:
+    WordDictionary() {
+        root = new TrieNode();
+    }
+};
+
