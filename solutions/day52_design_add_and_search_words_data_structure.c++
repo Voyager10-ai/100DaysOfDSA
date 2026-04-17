@@ -60,3 +60,15 @@ public:
     }
 };
 
+int main() {
+    WordDictionary wordDictionary;
+    wordDictionary.addWord("bad");
+    wordDictionary.addWord("dad");
+    wordDictionary.addWord("mad");
+    cout << (wordDictionary.search("pad") ? "True" : "False") << endl; // return False
+    cout << (wordDictionary.search("bad") ? "True" : "False") << endl; // return True
+    cout << (wordDictionary.search(".ad") ? "True" : "False") << endl; // return True
+    cout << (wordDictionary.search("b..") ? "True" : "False") << endl; // return True
+    return 0;
+}
+
