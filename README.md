@@ -55,4 +55,5 @@ Tracking my consistency and growth in problem solving.
 - Day 50: Serialize and Deserialize Binary Tree
 - Day 51: Implement Trie (Prefix Tree)
 - Day 52: Design Add and Search Words Data Structure
+- Day 53: Word Search II
 
