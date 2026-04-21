@@ -58,4 +58,5 @@ Tracking my consistency and growth in problem solving.
 - Day 53: Word Search II
 - Day 54: Top K Frequent Elements
 - Day 55: Kth Largest Element in an Array
+- Day 56: Find Median from Data Stream
 
