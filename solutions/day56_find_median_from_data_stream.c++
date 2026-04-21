@@ -28,12 +28,35 @@ public:
     }
     
     void addNum(int num) {
-        // Implementation will be added in the next commit
+        small.push(num);
+        
+        // Ensure every num in small is <= every num in large
+        if (!small.empty() && !large.empty() && small.top() > large.top()) {
+            int val = small.top();
+            small.pop();
+            large.push(val);
+        }
+        
+        // Handle uneven size
+        if (small.size() > large.size() + 1) {
+            int val = small.top();
+            small.pop();
+            large.push(val);
+        }
+        if (large.size() > small.size() + 1) {
+            int val = large.top();
+            large.pop();
+            small.push(val);
+        }
     }
     
     double findMedian() {
-        // Implementation will be added in the next commit
-        return 0.0;
+        if (small.size() > large.size()) {
+            return (double)small.top();
+        } else if (large.size() > small.size()) {
+            return (double)large.top();
+        }
+        return (small.top() + large.top()) / 2.0;
     }
 };
 
