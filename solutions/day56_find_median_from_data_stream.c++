@@ -62,10 +62,25 @@ public:
 
 int main() {
     MedianFinder* obj = new MedianFinder();
+    
+    // Test Case 1
     obj->addNum(1);
     obj->addNum(2);
-    cout << "Median: " << obj->findMedian() << endl; // Expected: 1.5
+    cout << "Test 1 - Median (1, 2): " << obj->findMedian() << " (Expected: 1.5)" << endl;
+    
+    // Test Case 2
     obj->addNum(3);
-    cout << "Median: " << obj->findMedian() << endl; // Expected: 2.0
+    cout << "Test 2 - Median (1, 2, 3): " << obj->findMedian() << " (Expected: 2.0)" << endl;
+    
+    // Test Case 3
+    obj->addNum(10);
+    obj->addNum(5);
+    cout << "Test 3 - Median (1, 2, 3, 5, 10): " << obj->findMedian() << " (Expected: 3.0)" << endl;
+    
+    // Test Case 4
+    obj->addNum(4);
+    cout << "Test 4 - Median (1, 2, 3, 4, 5, 10): " << obj->findMedian() << " (Expected: 3.5)" << endl;
+    
+    delete obj;
     return 0;
 }
