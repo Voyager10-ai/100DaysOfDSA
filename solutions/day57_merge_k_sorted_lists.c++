@@ -42,8 +42,29 @@ public:
     }
 };
 
+void printList(ListNode* head) {
+    while (head) {
+        cout << head->val << " -> ";
+        head = head->next;
+    }
+    cout << "nullptr" << endl;
+}
+
 int main() {
     Solution sol;
     cout << "Testing Merge k Sorted Lists" << endl;
+
+    // Creating lists: [1->4->5], [1->3->4], [2->6]
+    ListNode* l1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+    ListNode* l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+    ListNode* l3 = new ListNode(2, new ListNode(6));
+
+    vector<ListNode*> lists = {l1, l2, l3};
+    ListNode* mergedHead = sol.mergeKLists(lists);
+    
+    cout << "Merged List: ";
+    printList(mergedHead);
+    // Expected output: 1 -> 1 -> 2 -> 3 -> 4 -> 4 -> 5 -> 6 -> nullptr
+
     return 0;
 }
