@@ -27,6 +27,8 @@ public:
         }
     }
 
+    // Time Complexity: O(N log k) where N is total number of nodes and k is number of linked lists
+    // Space Complexity: O(log k) for recursion stack in merging, or O(1) if iteratively merging
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         if (lists.empty()) return nullptr;
         
