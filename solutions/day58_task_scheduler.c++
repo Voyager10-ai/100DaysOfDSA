@@ -31,5 +31,18 @@ public:
 int main() {
     Solution sol;
     cout << "Testing Task Scheduler" << endl;
+    
+    vector<char> tasks1 = {'A', 'A', 'A', 'B', 'B', 'B'};
+    int n1 = 2;
+    cout << "Test 1 - Least Interval: " << sol.leastInterval(tasks1, n1) << " (Expected: 8)" << endl;
+
+    vector<char> tasks2 = {'A', 'A', 'A', 'B', 'B', 'B'};
+    int n2 = 0;
+    cout << "Test 2 - Least Interval: " << sol.leastInterval(tasks2, n2) << " (Expected: 6)" << endl;
+
+    vector<char> tasks3 = {'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+    int n3 = 2;
+    cout << "Test 3 - Least Interval: " << sol.leastInterval(tasks3, n3) << " (Expected: 16)" << endl;
+
     return 0;
 }
