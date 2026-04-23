@@ -7,6 +7,8 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity: O(N) where N is number of tasks, since we iterate through the list of tasks to count frequencies
+    // Space Complexity: O(1) since the frequency array is always size 26
     int leastInterval(vector<char>& tasks, int n) {
         vector<int> counts(26, 0);
         int maxFreq = 0;
