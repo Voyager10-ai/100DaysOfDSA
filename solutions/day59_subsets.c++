@@ -21,3 +21,18 @@ public:
         return result;
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> nums = {1, 2, 3};
+    vector<vector<int>> result = sol.subsets(nums);
+    cout << "Subsets:" << endl;
+    for (const auto& subset : result) {
+        cout << "[ ";
+        for (int num : subset) {
+            cout << num << " ";
+        }
+        cout << "]" << endl;
+    }
+    return 0;
+}
