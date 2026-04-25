@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Solution {
 private:
     void backtrack(vector<int>& candidates, int target, int start, vector<int>& current, vector<vector<int>>& result) {
@@ -21,3 +26,19 @@ public:
         return result;
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> candidates = {2, 3, 6, 7};
+    int target = 7;
+    vector<vector<int>> result = sol.combinationSum(candidates, target);
+    cout << "Combinations:" << endl;
+    for (const auto& combination : result) {
+        cout << "[ ";
+        for (int num : combination) {
+            cout << num << " ";
+        }
+        cout << "]" << endl;
+    }
+    return 0;
+}
