@@ -31,3 +31,20 @@ public:
         return res;
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> nums = {1, 2, 3};
+    vector<vector<int>> res = sol.permute(nums);
+    
+    cout << "Permutations:" << endl;
+    for (const auto& p : res) {
+        cout << "[ ";
+        for (int num : p) {
+            cout << num << " ";
+        }
+        cout << "]" << endl;
+    }
+    
+    return 0;
+}
