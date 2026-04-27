@@ -27,3 +27,20 @@ public:
         return res;
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> nums = {1, 2, 2};
+    vector<vector<int>> res = sol.subsetsWithDup(nums);
+    
+    cout << "Subsets II:" << endl;
+    for (const auto& subset : res) {
+        cout << "[ ";
+        for (int num : subset) {
+            cout << num << " ";
+        }
+        cout << "]" << endl;
+    }
+    
+    return 0;
+}
