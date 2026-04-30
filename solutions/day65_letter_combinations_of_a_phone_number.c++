@@ -1,8 +1,22 @@
+/*
+ * Day 65: Letter Combinations of a Phone Number
+ * 
+ * Problem: Given a string containing digits from 2-9 inclusive,
+ *          return all possible letter combinations that the number could represent.
+ * 
+ * Approach: Backtracking
+ *   - Map each digit to its corresponding letters (like a phone keypad)
+ *   - Recursively build combinations by choosing one letter per digit
+ *   - Time Complexity: O(4^n) where n = number of digits (worst case digit maps to 4 letters)
+ *   - Space Complexity: O(n) for recursion depth
+ */
+
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
+
 
 class Solution {
     // Mapping of digits to corresponding letters (like a phone keypad)
