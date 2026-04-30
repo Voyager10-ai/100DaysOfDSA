@@ -98,5 +98,16 @@ int main() {
     }
     cout << "]" << endl;
 
+    // Test Case 4: digits = "79" (4-letter mappings)
+    string digits4 = "79";
+    vector<string> result4 = sol.letterCombinations(digits4);
+    cout << "\nInput: \"" << digits4 << "\"" << endl;
+    cout << "Output: [";
+    for (int i = 0; i < result4.size(); ++i) {
+        cout << "\"" << result4[i] << "\"";
+        if (i < result4.size() - 1) cout << ", ";
+    }
+    cout << "]" << endl;
+
     return 0;
 }
