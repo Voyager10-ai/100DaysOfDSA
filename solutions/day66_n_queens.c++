@@ -94,5 +94,11 @@ int main() {
         cout << endl;
     }
 
+    // Test Case 3: n = 8 (classic 8-Queens, expected 92 solutions)
+    int n3 = 8;
+    vector<vector<string>> result3 = sol.solveNQueens(n3);
+    cout << "Input: n = " << n3 << endl;
+    cout << "Number of solutions: " << result3.size() << " (expected 92)" << endl;
+
     return 0;
 }
