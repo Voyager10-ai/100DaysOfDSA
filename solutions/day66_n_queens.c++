@@ -17,10 +17,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <unordered_set>
 
 using namespace std;
 
 class Solution {
+    unordered_set<int> cols;      // Columns with queens
+    unordered_set<int> diag1;     // row - col diagonals (\)
+    unordered_set<int> diag2;     // row + col anti-diagonals (/)
+
     void backtrack(int n, int row, vector<string>& board, vector<vector<string>>& result) {
         // Base case: all queens are placed
         if (row == n) {
@@ -29,37 +34,30 @@ class Solution {
         }
 
         for (int col = 0; col < n; ++col) {
-            if (isSafe(board, row, col, n)) {
-                board[row][col] = 'Q';
-                backtrack(n, row + 1, board, result);
-                board[row][col] = '.'; // Backtrack
-            }
-        }
-    }
+            // O(1) conflict check using hash sets
+            if (cols.count(col) || diag1.count(row - col) || diag2.count(row + col))
+                continue;
 
-    bool isSafe(vector<string>& board, int row, int col, int n) {
-        // Check column above
-        for (int i = 0; i < row; ++i) {
-            if (board[i][col] == 'Q') return false;
-        }
+            board[row][col] = 'Q';
+            cols.insert(col);
+            diag1.insert(row - col);
+            diag2.insert(row + col);
 
-        // Check upper-left diagonal
-        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; --i, --j) {
-            if (board[i][j] == 'Q') return false;
-        }
+            backtrack(n, row + 1, board, result);
 
-        // Check upper-right diagonal
-        for (int i = row - 1, j = col + 1; i >= 0 && j < n; --i, ++j) {
-            if (board[i][j] == 'Q') return false;
+            // Backtrack
+            board[row][col] = '.';
+            cols.erase(col);
+            diag1.erase(row - col);
+            diag2.erase(row + col);
         }
-
-        return true;
     }
 
 public:
     vector<vector<string>> solveNQueens(int n) {
         vector<vector<string>> result;
         vector<string> board(n, string(n, '.'));
+        cols.clear(); diag1.clear(); diag2.clear();
         backtrack(n, 0, board, result);
         return result;
     }
