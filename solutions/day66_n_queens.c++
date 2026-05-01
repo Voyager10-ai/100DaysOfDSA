@@ -1,3 +1,19 @@
+/*
+ * Day 66: N-Queens
+ * 
+ * Problem: Place n queens on an n×n chessboard such that no two queens
+ *          attack each other (no shared row, column, or diagonal).
+ *          Return all distinct solutions.
+ * 
+ * Approach: Backtracking (row-by-row placement)
+ *   - Place one queen per row, trying each column
+ *   - For each placement, check safety: no queen in same column,
+ *     upper-left diagonal, or upper-right diagonal
+ *   - If safe, recurse to the next row; otherwise backtrack
+ *   - Time Complexity: O(n!) — pruned permutation search
+ *   - Space Complexity: O(n^2) for the board
+ */
+
 #include <iostream>
 #include <vector>
 #include <string>
