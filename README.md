@@ -68,3 +68,4 @@ Tracking my consistency and growth in problem solving.
 - Day 63: Combination Sum II
 - Day 64: Word Search
 - Day 65: Letter Combinations of a Phone Number
+- Day 66: N-Queens
