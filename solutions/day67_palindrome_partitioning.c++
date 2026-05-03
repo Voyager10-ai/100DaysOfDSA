@@ -97,5 +97,9 @@ int main() {
     string s3 = "racecar";
     printResult(s3, sol.partition(s3));
 
+    // Test Case 4: s = "aabb" (overlapping palindromes)
+    string s4 = "aabb";
+    printResult(s4, sol.partition(s4));
+
     return 0;
 }
