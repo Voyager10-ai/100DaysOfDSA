@@ -65,58 +65,37 @@ public:
         return result;
     }
 };
+// Helper to print partition results
+void printResult(const string& input, const vector<vector<string>>& result) {
+    cout << "Input: \"" << input << "\"" << endl;
+    cout << "Number of partitions: " << result.size() << endl;
+    cout << "Output: [";
+    for (int i = 0; i < result.size(); ++i) {
+        cout << "[";
+        for (int j = 0; j < result[i].size(); ++j) {
+            cout << "\"" << result[i][j] << "\"";
+            if (j < result[i].size() - 1) cout << ", ";
+        }
+        cout << "]";
+        if (i < result.size() - 1) cout << ", ";
+    }
+    cout << "]" << endl << endl;
+}
 
 int main() {
     Solution sol;
 
-    // Test Case 1: s = "aab"
+    // Test Case 1: s = "aab" → [["a","a","b"], ["aa","b"]]
     string s1 = "aab";
-    vector<vector<string>> result1 = sol.partition(s1);
-    cout << "Input: \"" << s1 << "\"" << endl;
-    cout << "Output: [";
-    for (int i = 0; i < result1.size(); ++i) {
-        cout << "[";
-        for (int j = 0; j < result1[i].size(); ++j) {
-            cout << "\"" << result1[i][j] << "\"";
-            if (j < result1[i].size() - 1) cout << ", ";
-        }
-        cout << "]";
-        if (i < result1.size() - 1) cout << ", ";
-    }
-    cout << "]" << endl;
+    printResult(s1, sol.partition(s1));
 
-    // Test Case 2: s = "a"
+    // Test Case 2: s = "a" → [["a"]]
     string s2 = "a";
-    vector<vector<string>> result2 = sol.partition(s2);
-    cout << "\nInput: \"" << s2 << "\"" << endl;
-    cout << "Output: [";
-    for (int i = 0; i < result2.size(); ++i) {
-        cout << "[";
-        for (int j = 0; j < result2[i].size(); ++j) {
-            cout << "\"" << result2[i][j] << "\"";
-            if (j < result2[i].size() - 1) cout << ", ";
-        }
-        cout << "]";
-        if (i < result2.size() - 1) cout << ", ";
-    }
-    cout << "]" << endl;
+    printResult(s2, sol.partition(s2));
 
     // Test Case 3: s = "racecar" (full palindrome string)
     string s3 = "racecar";
-    vector<vector<string>> result3 = sol.partition(s3);
-    cout << "\nInput: \"" << s3 << "\"" << endl;
-    cout << "Number of partitions: " << result3.size() << endl;
-    cout << "Output: [";
-    for (int i = 0; i < result3.size(); ++i) {
-        cout << "[";
-        for (int j = 0; j < result3[i].size(); ++j) {
-            cout << "\"" << result3[i][j] << "\"";
-            if (j < result3[i].size() - 1) cout << ", ";
-        }
-        cout << "]";
-        if (i < result3.size() - 1) cout << ", ";
-    }
-    cout << "]" << endl;
+    printResult(s3, sol.partition(s3));
 
     return 0;
 }
