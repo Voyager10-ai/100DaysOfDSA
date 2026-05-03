@@ -19,13 +19,24 @@
 using namespace std;
 
 class Solution {
-    bool isPalindrome(string& s, int left, int right) {
-        while (left < right) {
-            if (s[left] != s[right]) return false;
-            ++left;
-            --right;
+    vector<vector<bool>> dp; // dp[i][j] = true if s[i..j] is a palindrome
+
+    void buildPalindromeTable(string& s) {
+        int n = s.length();
+        dp.assign(n, vector<bool>(n, false));
+
+        // Every single character is a palindrome
+        for (int i = 0; i < n; ++i) dp[i][i] = true;
+
+        // Check substrings of length 2+
+        for (int len = 2; len <= n; ++len) {
+            for (int i = 0; i <= n - len; ++i) {
+                int j = i + len - 1;
+                if (s[i] == s[j]) {
+                    dp[i][j] = (len == 2) || dp[i + 1][j - 1];
+                }
+            }
         }
-        return true;
     }
 
     void backtrack(string& s, int start, vector<string>& partition, vector<vector<string>>& result) {
@@ -37,7 +48,7 @@ class Solution {
 
         // Try every possible substring starting from 'start'
         for (int end = start; end < s.length(); ++end) {
-            if (isPalindrome(s, start, end)) {
+            if (dp[start][end]) { // O(1) palindrome check via DP table
                 partition.push_back(s.substr(start, end - start + 1));
                 backtrack(s, end + 1, partition, result);
                 partition.pop_back(); // Backtrack
@@ -49,6 +60,7 @@ public:
     vector<vector<string>> partition(string s) {
         vector<vector<string>> result;
         vector<string> current;
+        buildPalindromeTable(s);
         backtrack(s, 0, current, result);
         return result;
     }
