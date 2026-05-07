@@ -25,3 +25,13 @@ public:
         return dp[n];
     }
 };
+
+int main() {
+    Solution solution;
+    
+    string s1 = "leetcode";
+    vector<string> wordDict1 = {"leet", "code"};
+    cout << "Test 1: " << (solution.wordBreak(s1, wordDict1) ? "Pass" : "Fail") << endl;
+    
+    return 0;
+}
