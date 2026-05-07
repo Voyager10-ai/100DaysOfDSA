@@ -33,5 +33,13 @@ int main() {
     vector<string> wordDict1 = {"leet", "code"};
     cout << "Test 1: " << (solution.wordBreak(s1, wordDict1) ? "Pass" : "Fail") << endl;
     
+    string s2 = "applepenapple";
+    vector<string> wordDict2 = {"apple", "pen"};
+    cout << "Test 2: " << (solution.wordBreak(s2, wordDict2) ? "Pass" : "Fail") << endl;
+
+    string s3 = "catsandog";
+    vector<string> wordDict3 = {"cats", "dog", "sand", "and", "cat"};
+    cout << "Test 3: " << (!solution.wordBreak(s3, wordDict3) ? "Pass" : "Fail") << endl;
+    
     return 0;
 }
