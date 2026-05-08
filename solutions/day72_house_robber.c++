@@ -21,3 +21,12 @@ public:
         return dp.back();
     }
 };
+
+int main() {
+    Solution solution;
+    
+    vector<int> nums1 = {1, 2, 3, 1};
+    cout << "Test 1: " << (solution.rob(nums1) == 4 ? "Pass" : "Fail") << endl;
+    
+    return 0;
+}
