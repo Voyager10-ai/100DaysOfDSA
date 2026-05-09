@@ -32,3 +32,21 @@ public:
         return max(robFirst, robSecond);
     }
 };
+
+int main() {
+    Solution solution;
+    
+    vector<int> nums1 = {2, 3, 2};
+    cout << "Test 1: " << (solution.rob(nums1) == 3 ? "Pass" : "Fail") << endl;
+    
+    vector<int> nums2 = {1, 2, 3, 1};
+    cout << "Test 2: " << (solution.rob(nums2) == 4 ? "Pass" : "Fail") << endl;
+
+    vector<int> nums3 = {1, 2, 3};
+    cout << "Test 3: " << (solution.rob(nums3) == 3 ? "Pass" : "Fail") << endl;
+    
+    vector<int> nums4 = {0};
+    cout << "Test 4: " << (solution.rob(nums4) == 0 ? "Pass" : "Fail") << endl;
+    
+    return 0;
+}
