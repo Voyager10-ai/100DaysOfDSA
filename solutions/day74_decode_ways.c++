@@ -33,3 +33,18 @@ public:
         return dp[n];
     }
 };
+
+int main() {
+    Solution solution;
+    
+    string s1 = "12";
+    cout << "Test 1: " << (solution.numDecodings(s1) == 2 ? "Pass" : "Fail") << endl;
+    
+    string s2 = "226";
+    cout << "Test 2: " << (solution.numDecodings(s2) == 3 ? "Pass" : "Fail") << endl;
+    
+    string s3 = "06";
+    cout << "Test 3: " << (solution.numDecodings(s3) == 0 ? "Pass" : "Fail") << endl;
+    
+    return 0;
+}
