@@ -17,7 +17,18 @@ public:
         dp[0] = 1;
         dp[1] = 1;
         
-        // Loop implementation will be added here
+        for (int i = 2; i <= n; ++i) {
+            int singleDigit = s[i - 1] - '0';
+            int doubleDigit = (s[i - 2] - '0') * 10 + (s[i - 1] - '0');
+            
+            if (singleDigit >= 1 && singleDigit <= 9) {
+                dp[i] += dp[i - 1];
+            }
+            
+            if (doubleDigit >= 10 && doubleDigit <= 26) {
+                dp[i] += dp[i - 2];
+            }
+        }
         
         return dp[n];
     }
