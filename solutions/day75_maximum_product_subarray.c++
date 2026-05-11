@@ -25,3 +25,18 @@ public:
         return result;
     }
 };
+
+int main() {
+    Solution solution;
+    
+    vector<int> nums1 = {2, 3, -2, 4};
+    cout << "Test 1: " << (solution.maxProduct(nums1) == 6 ? "Pass" : "Fail") << endl;
+    
+    vector<int> nums2 = {-2, 0, -1};
+    cout << "Test 2: " << (solution.maxProduct(nums2) == 0 ? "Pass" : "Fail") << endl;
+    
+    vector<int> nums3 = {-2, 3, -4};
+    cout << "Test 3: " << (solution.maxProduct(nums3) == 24 ? "Pass" : "Fail") << endl;
+    
+    return 0;
+}
