@@ -79,3 +79,4 @@ Tracking my consistency and growth in problem solving.
 - Day 74: Decode Ways
 - Day 75: Maximum Product Subarray
 - Day 76: Partition Equal Subset Sum
+- Day 77: Unique Paths
