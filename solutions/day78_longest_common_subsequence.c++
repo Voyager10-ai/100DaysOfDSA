@@ -24,3 +24,17 @@ public:
         return dp[m][n];
     }
 };
+
+int main() {
+    Solution sol;
+    
+    string text1_1 = "abcde", text2_1 = "ace";
+    string text1_2 = "abc", text2_2 = "abc";
+    string text1_3 = "abc", text2_3 = "def";
+    
+    cout << "Test case 1: " << sol.longestCommonSubsequence(text1_1, text2_1) << " (Expected: 3)" << endl;
+    cout << "Test case 2: " << sol.longestCommonSubsequence(text1_2, text2_2) << " (Expected: 3)" << endl;
+    cout << "Test case 3: " << sol.longestCommonSubsequence(text1_3, text2_3) << " (Expected: 0)" << endl;
+    
+    return 0;
+}
