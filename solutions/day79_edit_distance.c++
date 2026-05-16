@@ -28,3 +28,15 @@ public:
         return dp[m][n];
     }
 };
+
+int main() {
+    Solution sol;
+    
+    string word1_1 = "horse", word2_1 = "ros";
+    string word1_2 = "intention", word2_2 = "execution";
+    
+    cout << "Test case 1: " << sol.minDistance(word1_1, word2_1) << " (Expected: 3)" << endl;
+    cout << "Test case 2: " << sol.minDistance(word1_2, word2_2) << " (Expected: 5)" << endl;
+    
+    return 0;
+}
