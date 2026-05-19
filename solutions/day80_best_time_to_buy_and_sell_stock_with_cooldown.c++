@@ -28,3 +28,24 @@ public:
         return max(sold, rest);
     }
 };
+
+int main() {
+    Solution sol;
+
+    vector<int> prices1 = {1, 2, 3, 0, 2};
+    cout << "Test 1: " << sol.maxProfit(prices1) << " (Expected: 3)" << endl;
+
+    vector<int> prices2 = {1};
+    cout << "Test 2: " << sol.maxProfit(prices2) << " (Expected: 0)" << endl;
+
+    vector<int> prices3 = {1, 2, 4};
+    cout << "Test 3: " << sol.maxProfit(prices3) << " (Expected: 3)" << endl;
+
+    vector<int> prices4 = {2, 1, 4, 5, 2, 9, 7};
+    cout << "Test 4: " << sol.maxProfit(prices4) << " (Expected: 11)" << endl;
+
+    vector<int> prices5 = {6, 1, 3, 2, 4, 7};
+    cout << "Test 5: " << sol.maxProfit(prices5) << " (Expected: 6)" << endl;
+
+    return 0;
+}
