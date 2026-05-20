@@ -43,3 +43,14 @@ public:
         return dp[m][n];
     }
 };
+
+int main() {
+    Solution sol;
+
+    // Basic test cases
+    cout << "Test 1: " << (sol.isMatch("aa", "a") ? "true" : "false") << " (Expected: false)" << endl;
+    cout << "Test 2: " << (sol.isMatch("aa", "a*") ? "true" : "false") << " (Expected: true)" << endl;
+    cout << "Test 3: " << (sol.isMatch("ab", ".*") ? "true" : "false") << " (Expected: true)" << endl;
+
+    return 0;
+}
