@@ -47,10 +47,21 @@ public:
 int main() {
     Solution sol;
 
-    // Basic test cases
+    // Basic test cases from LeetCode
     cout << "Test 1: " << (sol.isMatch("aa", "a") ? "true" : "false") << " (Expected: false)" << endl;
     cout << "Test 2: " << (sol.isMatch("aa", "a*") ? "true" : "false") << " (Expected: true)" << endl;
     cout << "Test 3: " << (sol.isMatch("ab", ".*") ? "true" : "false") << " (Expected: true)" << endl;
+
+    // Edge cases
+    cout << "Test 4: " << (sol.isMatch("", "") ? "true" : "false") << " (Expected: true)" << endl;
+    cout << "Test 5: " << (sol.isMatch("", "a*") ? "true" : "false") << " (Expected: true)" << endl;
+    cout << "Test 6: " << (sol.isMatch("aab", "c*a*b") ? "true" : "false") << " (Expected: true)" << endl;
+
+    // Complex patterns
+    cout << "Test 7: " << (sol.isMatch("mississippi", "mis*is*p*.") ? "true" : "false") << " (Expected: false)" << endl;
+    cout << "Test 8: " << (sol.isMatch("ab", ".*c") ? "true" : "false") << " (Expected: false)" << endl;
+    cout << "Test 9: " << (sol.isMatch("aaa", "a*a") ? "true" : "false") << " (Expected: true)" << endl;
+    cout << "Test 10: " << (sol.isMatch("a", "ab*") ? "true" : "false") << " (Expected: true)" << endl;
 
     return 0;
 }
