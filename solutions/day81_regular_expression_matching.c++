@@ -16,6 +16,13 @@ public:
         // Empty string matches empty pattern
         dp[0][0] = true;
 
+        // Handle patterns like a*, a*b*, a*b*c* that can match empty string
+        for (int j = 2; j <= n; ++j) {
+            if (p[j - 1] == '*') {
+                dp[0][j] = dp[0][j - 2];
+            }
+        }
+
         return dp[m][n];
     }
 };
