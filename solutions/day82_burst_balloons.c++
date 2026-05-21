@@ -35,3 +35,18 @@ public:
         return dp[0][size - 1];
     }
 };
+
+int main() {
+    Solution sol;
+
+    vector<int> nums1 = {3, 1, 5, 8};
+    cout << "Test 1: " << sol.maxCoins(nums1) << " (Expected: 167)" << endl;
+
+    vector<int> nums2 = {1, 5};
+    cout << "Test 2: " << sol.maxCoins(nums2) << " (Expected: 10)" << endl;
+
+    vector<int> nums3 = {1};
+    cout << "Test 3: " << sol.maxCoins(nums3) << " (Expected: 1)" << endl;
+
+    return 0;
+}
