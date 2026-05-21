@@ -25,7 +25,9 @@ public:
                 int right = left + len;
                 // Try each balloon k as the LAST one to burst in (left, right)
                 for (int k = left + 1; k < right; ++k) {
-                    // placeholder for transition
+                    int coins = balloons[left] * balloons[k] * balloons[right];
+                    coins += dp[left][k] + dp[k][right];
+                    dp[left][right] = max(dp[left][right], coins);
                 }
             }
         }
