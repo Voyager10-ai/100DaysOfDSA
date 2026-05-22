@@ -85,3 +85,4 @@ Tracking my consistency and growth in problem solving.
 - Day 80: Best Time to Buy and Sell Stock with Cooldown
 - Day 81: Regular Expression Matching
 - Day 82: Burst Balloons
+- Day 83: Maximal Square

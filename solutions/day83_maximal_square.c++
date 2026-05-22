@@ -64,5 +64,44 @@ int main() {
     };
     cout << "Test 3: " << sol.maximalSquare(matrix3) << " (Expected: 0)" << endl;
 
+    // Single '1'
+    vector<vector<char>> matrix4 = {
+        {'1'}
+    };
+    cout << "Test 4: " << sol.maximalSquare(matrix4) << " (Expected: 1)" << endl;
+
+    // Entire matrix of 1s
+    vector<vector<char>> matrix5 = {
+        {'1','1','1'},
+        {'1','1','1'},
+        {'1','1','1'}
+    };
+    cout << "Test 5: " << sol.maximalSquare(matrix5) << " (Expected: 9)" << endl;
+
+    // Large square embedded
+    vector<vector<char>> matrix6 = {
+        {'0','0','0','0','0'},
+        {'0','1','1','1','0'},
+        {'0','1','1','1','0'},
+        {'0','1','1','1','0'},
+        {'0','0','0','0','0'}
+    };
+    cout << "Test 6: " << sol.maximalSquare(matrix6) << " (Expected: 9)" << endl;
+
+    // Single row
+    vector<vector<char>> matrix7 = {
+        {'1','1','0','1','1','1'}
+    };
+    cout << "Test 7: " << sol.maximalSquare(matrix7) << " (Expected: 1)" << endl;
+
+    // Single column
+    vector<vector<char>> matrix8 = {
+        {'1'},
+        {'1'},
+        {'0'},
+        {'1'}
+    };
+    cout << "Test 8: " << sol.maximalSquare(matrix8) << " (Expected: 1)" << endl;
+
     return 0;
 }
