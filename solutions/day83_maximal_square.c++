@@ -6,10 +6,16 @@ using namespace std;
 
 class Solution {
 public:
-    // Maximal Square - DP
-    // Find the largest square containing only 1's in a binary matrix
-    // dp[i][j] = side length of largest square with bottom-right corner at (i,j)
     int maximalSquare(vector<vector<char>>& matrix) {
-        return 0;
+        if (matrix.empty() || matrix[0].empty()) return 0;
+
+        int rows = matrix.size();
+        int cols = matrix[0].size();
+        int maxSide = 0;
+
+        // dp[i][j] = side length of largest square with bottom-right at (i,j)
+        vector<vector<int>> dp(rows, vector<int>(cols, 0));
+
+        return maxSide * maxSide;
     }
 };
