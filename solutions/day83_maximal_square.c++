@@ -25,6 +25,16 @@ public:
             maxSide = max(maxSide, dp[0][j]);
         }
 
+        // DP transition: min of top, left, top-left neighbors + 1
+        for (int i = 1; i < rows; ++i) {
+            for (int j = 1; j < cols; ++j) {
+                if (matrix[i][j] == '1') {
+                    dp[i][j] = min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]}) + 1;
+                    maxSide = max(maxSide, dp[i][j]);
+                }
+            }
+        }
+
         return maxSide * maxSide;
     }
 };
