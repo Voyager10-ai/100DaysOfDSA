@@ -38,3 +38,31 @@ public:
         return maxSide * maxSide;
     }
 };
+
+int main() {
+    Solution sol;
+
+    // LeetCode Example 1
+    vector<vector<char>> matrix1 = {
+        {'1','0','1','0','0'},
+        {'1','0','1','1','1'},
+        {'1','1','1','1','1'},
+        {'1','0','0','1','0'}
+    };
+    cout << "Test 1: " << sol.maximalSquare(matrix1) << " (Expected: 4)" << endl;
+
+    // LeetCode Example 2
+    vector<vector<char>> matrix2 = {
+        {'0','1'},
+        {'1','0'}
+    };
+    cout << "Test 2: " << sol.maximalSquare(matrix2) << " (Expected: 1)" << endl;
+
+    // All zeros
+    vector<vector<char>> matrix3 = {
+        {'0'}
+    };
+    cout << "Test 3: " << sol.maximalSquare(matrix3) << " (Expected: 0)" << endl;
+
+    return 0;
+}
