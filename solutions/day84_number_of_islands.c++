@@ -38,3 +38,27 @@ public:
         return count;
     }
 };
+
+int main() {
+    Solution sol;
+
+    // LeetCode Example 1
+    vector<vector<char>> grid1 = {
+        {'1','1','1','1','0'},
+        {'1','1','0','1','0'},
+        {'1','1','0','0','0'},
+        {'0','0','0','0','0'}
+    };
+    cout << "Test 1: " << sol.numIslands(grid1) << " (Expected: 1)" << endl;
+
+    // LeetCode Example 2
+    vector<vector<char>> grid2 = {
+        {'1','1','0','0','0'},
+        {'1','1','0','0','0'},
+        {'0','0','1','0','0'},
+        {'0','0','0','1','1'}
+    };
+    cout << "Test 2: " << sol.numIslands(grid2) << " (Expected: 3)" << endl;
+
+    return 0;
+}
