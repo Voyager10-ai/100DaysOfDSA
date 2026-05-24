@@ -42,7 +42,7 @@ public:
 int main() {
     Solution sol;
 
-    // LeetCode Example 1
+    // LeetCode Example 1 - single island
     vector<vector<char>> grid1 = {
         {'1','1','1','1','0'},
         {'1','1','0','1','0'},
@@ -51,7 +51,7 @@ int main() {
     };
     cout << "Test 1: " << sol.numIslands(grid1) << " (Expected: 1)" << endl;
 
-    // LeetCode Example 2
+    // LeetCode Example 2 - three islands
     vector<vector<char>> grid2 = {
         {'1','1','0','0','0'},
         {'1','1','0','0','0'},
@@ -59,6 +59,43 @@ int main() {
         {'0','0','0','1','1'}
     };
     cout << "Test 2: " << sol.numIslands(grid2) << " (Expected: 3)" << endl;
+
+    // All water
+    vector<vector<char>> grid3 = {
+        {'0','0','0'},
+        {'0','0','0'}
+    };
+    cout << "Test 3: " << sol.numIslands(grid3) << " (Expected: 0)" << endl;
+
+    // All land
+    vector<vector<char>> grid4 = {
+        {'1','1'},
+        {'1','1'}
+    };
+    cout << "Test 4: " << sol.numIslands(grid4) << " (Expected: 1)" << endl;
+
+    // Single cell island
+    vector<vector<char>> grid5 = {
+        {'1'}
+    };
+    cout << "Test 5: " << sol.numIslands(grid5) << " (Expected: 1)" << endl;
+
+    // Diagonal islands (not connected)
+    vector<vector<char>> grid6 = {
+        {'1','0','0'},
+        {'0','1','0'},
+        {'0','0','1'}
+    };
+    cout << "Test 6: " << sol.numIslands(grid6) << " (Expected: 3)" << endl;
+
+    // Complex pattern
+    vector<vector<char>> grid7 = {
+        {'1','0','1','0','1'},
+        {'0','1','0','1','0'},
+        {'1','0','1','0','1'},
+        {'0','1','0','1','0'}
+    };
+    cout << "Test 7: " << sol.numIslands(grid7) << " (Expected: 10)" << endl;
 
     return 0;
 }
