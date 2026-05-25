@@ -116,5 +116,74 @@ void freeGraph(Node* node) {
 }
 
 int main() {
+    Solution sol;
+
+    // Test 1: LeetCode Example – 4-node cycle  [[2,4],[1,3],[2,4],[1,3]]
+    {
+        Node* orig = buildGraph({{2,4},{1,3},{2,4},{1,3}});
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 1: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (4-node cycle)" << endl;
+        freeGraph(orig);
+        freeGraph(clone);
+    }
+
+    // Test 2: Single node, no neighbors  [[]]
+    {
+        Node* orig = new Node(1);
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 2: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (single node)" << endl;
+        delete orig;
+        delete clone;
+    }
+
+    // Test 3: Empty graph
+    {
+        Node* clone = sol.cloneGraph(nullptr);
+        cout << "Test 3: " << (clone == nullptr ? "PASS" : "FAIL")
+             << " (empty graph)" << endl;
+    }
+
+    // Test 4: Two connected nodes  [[2],[1]]
+    {
+        Node* orig = buildGraph({{2},{1}});
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 4: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (two connected nodes)" << endl;
+        freeGraph(orig);
+        freeGraph(clone);
+    }
+
+    // Test 5: Star graph – node 1 connected to all others
+    {
+        Node* orig = buildGraph({{2,3,4,5},{1},{1},{1},{1}});
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 5: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (star graph)" << endl;
+        freeGraph(orig);
+        freeGraph(clone);
+    }
+
+    // Test 6: Fully connected 3-node graph  [[2,3],[1,3],[1,2]]
+    {
+        Node* orig = buildGraph({{2,3},{1,3},{1,2}});
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 6: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (fully connected 3 nodes)" << endl;
+        freeGraph(orig);
+        freeGraph(clone);
+    }
+
+    // Test 7: Linear chain  1-2-3-4-5
+    {
+        Node* orig = buildGraph({{2},{1,3},{2,4},{3,5},{4}});
+        Node* clone = sol.cloneGraph(orig);
+        cout << "Test 7: " << (verifyClone(orig, clone) ? "PASS" : "FAIL")
+             << " (linear chain)" << endl;
+        freeGraph(orig);
+        freeGraph(clone);
+    }
+
     return 0;
 }
