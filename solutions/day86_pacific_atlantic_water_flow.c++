@@ -63,6 +63,43 @@ public:
     }
 };
 
+// Helper to print result cells
+void printResult(const string& label, const vector<vector<int>>& res) {
+    cout << label << " [";
+    for (int i = 0; i < (int)res.size(); ++i) {
+        cout << "[" << res[i][0] << "," << res[i][1] << "]";
+        if (i + 1 < (int)res.size()) cout << ",";
+    }
+    cout << "]" << endl;
+}
+
 int main() {
+    Solution sol;
+
+    // Test 1: LeetCode Example 1
+    {
+        vector<vector<int>> heights = {
+            {1,2,2,3,5},
+            {3,2,3,4,4},
+            {2,4,5,3,1},
+            {6,7,1,4,5},
+            {5,1,1,2,4}
+        };
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 1:", res);
+        // Expected: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+    }
+
+    // Test 2: LeetCode Example 2 – all same height
+    {
+        vector<vector<int>> heights = {
+            {1,1},
+            {1,1}
+        };
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 2:", res);
+        // Expected: [[0,0],[0,1],[1,0],[1,1]]
+    }
+
     return 0;
 }
