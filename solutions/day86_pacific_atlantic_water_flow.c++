@@ -101,5 +101,52 @@ int main() {
         // Expected: [[0,0],[0,1],[1,0],[1,1]]
     }
 
+    // Test 3: Single cell
+    {
+        vector<vector<int>> heights = {{5}};
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 3:", res);
+        // Expected: [[0,0]]
+    }
+
+    // Test 4: Single row – increasing left to right
+    {
+        vector<vector<int>> heights = {{1,2,3,4,5}};
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 4:", res);
+        // Expected: [[0,0],[0,1],[0,2],[0,3],[0,4]]
+    }
+
+    // Test 5: Single column – decreasing top to bottom
+    {
+        vector<vector<int>> heights = {{5},{4},{3},{2},{1}};
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 5:", res);
+        // Expected: [[0,0],[1,0],[2,0],[3,0],[4,0]]
+    }
+
+    // Test 6: Peak in center drains to both oceans
+    {
+        vector<vector<int>> heights = {
+            {1,1,1},
+            {1,9,1},
+            {1,1,1}
+        };
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 6:", res);
+        // Expected: all 9 cells
+    }
+
+    // Test 7: Descending diagonal – only corners & edges overlap
+    {
+        vector<vector<int>> heights = {
+            {10,8,6},
+            {8,6,4},
+            {6,4,2}
+        };
+        auto res = sol.pacificAtlantic(heights);
+        printResult("Test 7:", res);
+    }
+
     return 0;
 }
