@@ -40,6 +40,27 @@ public:
     }
 };
 
+// Helper to run a test case
+void runTest(int id, int numCourses, vector<vector<int>> prereqs, bool expected) {
+    Solution sol;
+    bool result = sol.canFinish(numCourses, prereqs);
+    cout << "Test " << id << ": " << (result == expected ? "PASS" : "FAIL")
+         << " (got " << (result ? "true" : "false")
+         << ", expected " << (expected ? "true" : "false") << ")" << endl;
+}
+
 int main() {
+    // Test 1: LeetCode Example 1 – 2 courses, one prerequisite, no cycle
+    runTest(1, 2, {{1,0}}, true);
+
+    // Test 2: LeetCode Example 2 – 2 courses, mutual prerequisite (cycle)
+    runTest(2, 2, {{1,0},{0,1}}, false);
+
+    // Test 3: No prerequisites at all
+    runTest(3, 5, {}, true);
+
+    // Test 4: Single course
+    runTest(4, 1, {}, true);
+
     return 0;
 }
