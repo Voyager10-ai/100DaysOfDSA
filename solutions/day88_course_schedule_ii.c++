@@ -125,5 +125,15 @@ int main() {
     // Test 12: Disconnected components – both acyclic
     runTest(12, 6, {{1,0},{2,1},{4,3},{5,4}}, true);
 
+    // Test 13: Wide fan-out – every course depends on course 0
+    runTest(13, 5, {{1,0},{2,0},{3,0},{4,0}}, true);
+
+    // Test 14: Complex multi-root DAG
+    //   0 → 2, 1 → 2, 2 → 3, 2 → 4, 3 → 5, 4 → 5
+    runTest(14, 6, {{2,0},{2,1},{3,2},{4,2},{5,3},{5,4}}, true);
+
+    // Test 15: Two courses, single prerequisite – verify ordering [0,1]
+    runTest(15, 2, {{1,0}}, true);
+
     return 0;
 }
