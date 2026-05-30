@@ -47,3 +47,24 @@ public:
         return {}; // unreachable per problem constraints
     }
 };
+
+// Helper to run a test case
+void runTest(int id, vector<vector<int>> edges, vector<int> expected) {
+    Solution sol;
+    vector<int> result = sol.findRedundantConnection(edges);
+    bool pass = (result == expected);
+    cout << "Test " << id << ": " << (pass ? "PASS" : "FAIL")
+         << " (got [" << result[0] << "," << result[1] << "]"
+         << ", expected [" << expected[0] << "," << expected[1] << "])" << endl;
+}
+
+int main() {
+    // Test 1: LeetCode Example 1 – triangle  1-2-3-1, redundant edge is [1,4]? No:
+    //   edges: [1,2],[1,3],[2,3] → answer is [2,3]
+    runTest(1, {{1,2},{1,3},{2,3}}, {2,3});
+
+    // Test 2: LeetCode Example 2 – 1-2-3-4-1-5, redundant edge is [1,4]
+    runTest(2, {{1,2},{2,3},{3,4},{1,4},{1,5}}, {1,4});
+
+    return 0;
+}
