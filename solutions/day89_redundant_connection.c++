@@ -66,5 +66,33 @@ int main() {
     // Test 2: LeetCode Example 2 – 1-2-3-4-1-5, redundant edge is [1,4]
     runTest(2, {{1,2},{2,3},{3,4},{1,4},{1,5}}, {1,4});
 
+    // Test 3: Simple pair – two nodes, one redundant edge
+    //   edges: [1,2],[1,2] → second [1,2] is redundant
+    runTest(3, {{1,2},{1,2}}, {1,2});
+
+    // Test 4: Linear chain closed into a cycle at the end
+    //   1-2-3-4-5-1 → last edge [5,1] creates cycle
+    runTest(4, {{1,2},{2,3},{3,4},{4,5},{5,1}}, {5,1});
+
+    // Test 5: Star graph – center node 1 connected to 2,3,4,5 then 2-3 closes cycle
+    runTest(5, {{1,2},{1,3},{1,4},{1,5},{2,3}}, {2,3});
+
+    // Test 6: Square cycle – 1-2-3-4-1, redundant edge is [4,1]
+    runTest(6, {{1,2},{2,3},{3,4},{4,1}}, {4,1});
+
+    // Test 7: Multiple possible redundant edges – last one in input wins
+    //   Triangle 1-2-3-1 plus edge 3-4 plus closing edge 2-4
+    runTest(7, {{1,2},{2,3},{3,1},{3,4},{2,4}}, {2,4});
+
+    // Test 8: Large chain stress test (1000 nodes, closing edge at end)
+    {
+        int n = 1000;
+        vector<vector<int>> edges;
+        for (int i = 1; i < n; ++i)
+            edges.push_back({i, i + 1});
+        edges.push_back({n, 1}); // closes the cycle
+        runTest(8, edges, {n, 1});
+    }
+
     return 0;
 }
