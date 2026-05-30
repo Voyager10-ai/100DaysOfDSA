@@ -30,3 +30,20 @@ public:
         return true;
     }
 };
+
+class Solution {
+public:
+    // Return the last edge that, when added, creates a cycle
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        int n = edges.size();
+        UnionFind uf(n);
+
+        for (auto& e : edges) {
+            // If union fails, both nodes are already connected → cycle
+            if (!uf.unite(e[0], e[1]))
+                return e;
+        }
+
+        return {}; // unreachable per problem constraints
+    }
+};
