@@ -74,3 +74,23 @@ public:
         return 0; // no path found
     }
 };
+
+// Helper to run a test case
+void runTest(int id, string beginWord, string endWord, vector<string> wordList, int expected) {
+    Solution sol;
+    int result = sol.ladderLength(beginWord, endWord, wordList);
+    cout << "Test " << id << ": " << (result == expected ? "PASS" : "FAIL")
+         << " (got " << result << ", expected " << expected << ")" << endl;
+}
+
+int main() {
+    // Test 1: LeetCode Example 1 – "hit" → "cog" via hot→dot→dog→cog = 5
+    runTest(1, "hit", "cog",
+            {"hot","dot","dog","lot","log","cog"}, 5);
+
+    // Test 2: LeetCode Example 2 – "hit" → "cog", but "cog" not in list → 0
+    runTest(2, "hit", "cog",
+            {"hot","dot","dog","lot","log"}, 0);
+
+    return 0;
+}
