@@ -115,5 +115,17 @@ int main() {
     runTest(8, "hit", "cog",
             {"hot","dot","dog","lot","log","cog","hog"}, 5);
 
+    // Test 9: Stress-lite – single-letter chain a→b→c→...→z = 26
+    {
+        vector<string> words;
+        for (char c = 'a'; c <= 'z'; ++c)
+            words.push_back(string(1, c));
+        runTest(9, "a", "z", words, 26);
+    }
+
+    // Test 10: Duplicate words in list should not affect result
+    runTest(10, "hit", "cog",
+            {"hot","dot","dog","lot","log","cog","hot","dot"}, 5);
+
     return 0;
 }
