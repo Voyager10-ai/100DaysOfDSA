@@ -92,5 +92,28 @@ int main() {
     runTest(2, "hit", "cog",
             {"hot","dot","dog","lot","log"}, 0);
 
+    // Test 3: beginWord equals endWord concept – but endWord must be in list
+    //   "a" → "c" via a→b→c = 3
+    runTest(3, "a", "c", {"a","b","c"}, 2);
+
+    // Test 4: Single-letter words, no path – "a" → "z", only "b" available
+    runTest(4, "a", "z", {"b"}, 0);
+
+    // Test 5: Direct one-hop transformation – "ab" → "ac"
+    runTest(5, "ab", "ac", {"ac"}, 2);
+
+    // Test 6: No transformation possible – completely disjoint words
+    runTest(6, "aaa", "zzz", {"bbb","ccc"}, 0);
+
+    // Test 7: Longer chain – "aaaa" → "cccc"
+    //   aaaa→aaac→aacc→accc→cccc = 5
+    runTest(7, "aaaa", "cccc",
+            {"aaac","aacc","accc","cccc"}, 5);
+
+    // Test 8: Multiple shortest paths exist – should still return correct length
+    //   hit → hot → {dot, lot} → {dog, log} → cog = 5
+    runTest(8, "hit", "cog",
+            {"hot","dot","dog","lot","log","cog","hog"}, 5);
+
     return 0;
 }
