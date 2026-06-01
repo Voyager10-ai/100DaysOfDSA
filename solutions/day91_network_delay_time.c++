@@ -46,3 +46,24 @@ public:
         return ans;
     }
 };
+
+// Helper to run a test case
+void runTest(int id, vector<vector<int>> times, int n, int k, int expected) {
+    Solution sol;
+    int result = sol.networkDelayTime(times, n, k);
+    cout << "Test " << id << ": " << (result == expected ? "PASS" : "FAIL")
+         << " (got " << result << ", expected " << expected << ")" << endl;
+}
+
+int main() {
+    // Test 1: LeetCode Example 1 – 4 nodes, source 2, answer 2
+    runTest(1, {{2,1,1},{2,3,1},{3,4,1}}, 4, 2, 2);
+
+    // Test 2: LeetCode Example 2 – single node, no edges
+    runTest(2, {}, 1, 1, 0);
+
+    // Test 3: LeetCode Example 3 – 2 nodes, unreachable node 2
+    runTest(3, {{1,2,1}}, 2, 2, -1);
+
+    return 0;
+}
