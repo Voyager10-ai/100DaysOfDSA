@@ -65,5 +65,37 @@ int main() {
     // Test 3: LeetCode Example 3 – 2 nodes, unreachable node 2
     runTest(3, {{1,2,1}}, 2, 2, -1);
 
+    // Test 4: Diamond DAG – two paths, shorter wins
+    //   1→2 (w=1), 1→3 (w=4), 2→3 (w=2), 2→4 (w=6), 3→4 (w=1)
+    //   Shortest to 4: 1→2→3→4 = 1+2+1 = 4
+    runTest(4, {{1,2,1},{1,3,4},{2,3,2},{2,4,6},{3,4,1}}, 4, 1, 4);
+
+    // Test 5: Fully connected 3 nodes – all edges weight 1, source 1
+    //   max dist = 1 (all reachable in 1 step)
+    runTest(5, {{1,2,1},{1,3,1},{2,1,1},{2,3,1},{3,1,1},{3,2,1}}, 3, 1, 1);
+
+    // Test 6: Linear chain 1→2→3→4→5, each weight 10 → max = 40
+    runTest(6, {{1,2,10},{2,3,10},{3,4,10},{4,5,10}}, 5, 1, 40);
+
+    // Test 7: Parallel edges – multiple edges between same nodes, shorter one wins
+    //   1→2 (w=5), 1→2 (w=2) → should use w=2
+    runTest(7, {{1,2,5},{1,2,2}}, 2, 1, 2);
+
+    // Test 8: Star graph – source 1 to all others, varying weights
+    //   1→2(3), 1→3(7), 1→4(1), 1→5(9) → max = 9
+    runTest(8, {{1,2,3},{1,3,7},{1,4,1},{1,5,9}}, 5, 1, 9);
+
+    // Test 9: Disconnected graph – node 3 unreachable from source 1
+    runTest(9, {{1,2,1},{2,1,1}}, 3, 1, -1);
+
+    // Test 10: Large chain stress test (500 nodes)
+    {
+        int n = 500;
+        vector<vector<int>> t;
+        for (int i = 1; i < n; ++i)
+            t.push_back({i, i + 1, 1});
+        runTest(10, t, n, 1, n - 1);
+    }
+
     return 0;
 }
