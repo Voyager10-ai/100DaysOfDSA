@@ -54,5 +54,29 @@ int main() {
     // Test 4: Cheaper with 1 stop – 0→1→2 = 200 < direct 500
     runTest(4, 3, {{0,1,100},{0,2,500},{1,2,100}}, 0, 2, 1, 200);
 
+    // Test 5: No path at all
+    runTest(5, 3, {{0,1,100}}, 0, 2, 1, -1);
+
+    // Test 6: Single node, src == dst
+    runTest(6, 1, {}, 0, 0, 0, 0);
+
+    // Test 7: Linear chain 0→1→2→3→4, k=3 (just enough stops)
+    runTest(7, 5, {{0,1,10},{1,2,10},{2,3,10},{3,4,10}}, 0, 4, 3, 40);
+
+    // Test 8: Linear chain, k too small
+    runTest(8, 5, {{0,1,10},{1,2,10},{2,3,10},{3,4,10}}, 0, 4, 2, -1);
+
+    // Test 9: Two paths – cheap long vs expensive short, k=1
+    runTest(9, 4, {{0,1,10},{1,2,10},{2,3,10},{0,3,100}}, 0, 3, 1, 100);
+
+    // Test 10: Two paths, k=2 → cheaper path available
+    runTest(10, 4, {{0,1,10},{1,2,10},{2,3,10},{0,3,100}}, 0, 3, 2, 30);
+
+    // Test 11: Cycle in graph – should still find cheapest
+    runTest(11, 3, {{0,1,1},{1,2,1},{2,0,1}}, 0, 2, 2, 2);
+
+    // Test 12: Large k but no path – disconnected components
+    runTest(12, 4, {{0,1,10},{2,3,10}}, 0, 3, 100, -1);
+
     return 0;
 }
