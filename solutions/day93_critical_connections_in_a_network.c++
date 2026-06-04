@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -64,7 +65,48 @@ public:
     }
 };
 
+// Normalize edges for comparison: sort each edge, then sort the list
+vector<vector<int>> normalize(vector<vector<int>> edges) {
+    for (auto& e : edges) sort(e.begin(), e.end());
+    sort(edges.begin(), edges.end());
+    return edges;
+}
+
+// Helper to run a test case
+void runTest(int id, int n, vector<vector<int>> connections,
+             vector<vector<int>> expected) {
+    Solution sol;
+    auto result = sol.criticalConnections(n, connections);
+
+    auto normResult   = normalize(result);
+    auto normExpected  = normalize(expected);
+
+    bool pass = (normResult == normExpected);
+    cout << "Test " << id << ": " << (pass ? "PASS" : "FAIL") << endl;
+    if (!pass) {
+        cout << "  Expected: {";
+        for (auto& e : normExpected) cout << "[" << e[0] << "," << e[1] << "] ";
+        cout << "}" << endl;
+        cout << "  Got:      {";
+        for (auto& e : normResult) cout << "[" << e[0] << "," << e[1] << "] ";
+        cout << "}" << endl;
+    }
+}
+
 int main() {
+    // Test 1: LeetCode Example – one bridge between node 1 and 3
+    runTest(1, 4, {{0,1},{1,2},{2,0},{1,3}}, {{1,3}});
+
+    // Test 2: Simple chain 0–1–2 — both edges are bridges
+    runTest(2, 3, {{0,1},{1,2}}, {{0,1},{1,2}});
+
+    // Test 3: Triangle — no bridges (every edge is in a cycle)
+    runTest(3, 3, {{0,1},{1,2},{2,0}}, {});
+
+    // Test 4: Two triangles connected by a bridge (2–3)
+    // 0-1-2  and  3-4-5  with bridge 2–3
+    runTest(4, 6, {{0,1},{1,2},{2,0},{2,3},{3,4},{4,5},{5,3}}, {{2,3}});
+
     return 0;
 }
 
