@@ -7,7 +7,15 @@ using namespace std;
 // LeetCode 1192 – Critical Connections in a Network
 // Given n servers (0 to n-1) and undirected connections, find all critical
 // connections (bridges) whose removal disconnects the graph.
-// Uses Tarjan's Bridge-Finding Algorithm.
+//
+// Algorithm: Tarjan's Bridge-Finding Algorithm
+//   1. Perform a DFS and assign each node a discovery timestamp (disc[u]).
+//   2. Track low[u] = minimum disc reachable from u's subtree via back-edges.
+//   3. An edge (u, v) is a bridge iff low[v] > disc[u], meaning v's subtree
+//      has NO back-edge reaching u or any ancestor of u.
+//
+// Time Complexity:  O(V + E) — single DFS over all vertices and edges
+// Space Complexity: O(V + E) — adjacency list + disc/low arrays + recursion stack
 
 class Solution {
     int timer = 0;
