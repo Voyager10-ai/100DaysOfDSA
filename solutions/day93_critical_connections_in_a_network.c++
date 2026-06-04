@@ -107,6 +107,36 @@ int main() {
     // 0-1-2  and  3-4-5  with bridge 2–3
     runTest(4, 6, {{0,1},{1,2},{2,0},{2,3},{3,4},{4,5},{5,3}}, {{2,3}});
 
+    // Test 5: Star graph – every edge is a bridge
+    // Center node 0 connected to 1, 2, 3, 4
+    runTest(5, 5, {{0,1},{0,2},{0,3},{0,4}}, {{0,1},{0,2},{0,3},{0,4}});
+
+    // Test 6: Complete graph K4 – no bridges
+    runTest(6, 4, {{0,1},{0,2},{0,3},{1,2},{1,3},{2,3}}, {});
+
+    // Test 7: Linear chain 0–1–2–3–4 – all 4 edges are bridges
+    runTest(7, 5, {{0,1},{1,2},{2,3},{3,4}},
+            {{0,1},{1,2},{2,3},{3,4}});
+
+    // Test 8: Two nodes, single edge – that edge is a bridge
+    runTest(8, 2, {{0,1}}, {{0,1}});
+
+    // Test 9: Cycle with a tail – 0-1-2-0 with tail 2–3
+    // Bridge is 2–3
+    runTest(9, 4, {{0,1},{1,2},{2,0},{2,3}}, {{2,3}});
+
+    // Test 10: Multiple bridges in a barbell graph
+    // Cycle 0-1-2-0, bridge 2–3, chain 3–4, cycle 4-5-6-4
+    runTest(10, 7, {{0,1},{1,2},{2,0},{2,3},{3,4},{4,5},{5,6},{6,4}},
+            {{2,3},{3,4}});
+
+    // Test 11: Figure-eight – two cycles sharing node 2, no bridges
+    runTest(11, 5, {{0,1},{1,2},{2,0},{2,3},{3,4},{4,2}}, {});
+
+    // Test 12: Larger test – diamond with pendant
+    // Diamond: 0-1, 0-2, 1-3, 2-3 (no bridges), pendant: 3-4 (bridge)
+    runTest(12, 5, {{0,1},{0,2},{1,3},{2,3},{3,4}}, {{3,4}});
+
     return 0;
 }
 
