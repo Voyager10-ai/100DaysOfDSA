@@ -96,3 +96,4 @@ Tracking my consistency and growth in problem solving.
 - Day 91: Network Delay Time
 - Day 92: Cheapest Flights Within K Stops
 - Day 93: Critical Connections in a Network
+- Day 94: Binary Search
