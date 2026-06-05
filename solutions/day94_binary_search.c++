@@ -68,5 +68,37 @@ int main() {
     // Test 6: Target is the last element
     runTest(6, {1,2,3,4,5,6,7}, 7, 6);
 
+    // Test 7: Two elements – target is first
+    runTest(7, {1,3}, 1, 0);
+
+    // Test 8: Two elements – target is second
+    runTest(8, {1,3}, 3, 1);
+
+    // Test 9: Two elements – target not present (between them)
+    runTest(9, {1,3}, 2, -1);
+
+    // Test 10: Target smaller than all elements
+    runTest(10, {10,20,30,40,50}, 5, -1);
+
+    // Test 11: Target larger than all elements
+    runTest(11, {10,20,30,40,50}, 55, -1);
+
+    // Test 12: All negative numbers – target found
+    runTest(12, {-100,-50,-20,-10,-5}, -20, 2);
+
+    // Test 13: All negative numbers – target not found
+    runTest(13, {-100,-50,-20,-10,-5}, -30, -1);
+
+    // Test 14: Even-length array – target at mid-left
+    runTest(14, {2,4,6,8,10,12}, 6, 2);
+
+    // Test 15: Large array – target near the end
+    vector<int> large(10000);
+    for (int i = 0; i < 10000; ++i) large[i] = i * 2;
+    runTest(15, large, 19998, 9999);
+
+    // Test 16: Large array – target not present
+    runTest(16, large, 7, -1);
+
     return 0;
 }
