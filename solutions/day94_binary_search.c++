@@ -41,6 +41,32 @@ public:
     }
 };
 
+// Helper to run a test case
+void runTest(int id, vector<int> nums, int target, int expected) {
+    Solution sol;
+    int result = sol.search(nums, target);
+    cout << "Test " << id << ": " << (result == expected ? "PASS" : "FAIL")
+         << " (got " << result << ", expected " << expected << ")" << endl;
+}
+
 int main() {
+    // Test 1: LeetCode Example 1 – target in the middle
+    runTest(1, {-1,0,3,5,9,12}, 9, 4);
+
+    // Test 2: LeetCode Example 2 – target not present
+    runTest(2, {-1,0,3,5,9,12}, 2, -1);
+
+    // Test 3: Single element – found
+    runTest(3, {5}, 5, 0);
+
+    // Test 4: Single element – not found
+    runTest(4, {5}, 3, -1);
+
+    // Test 5: Target is the first element
+    runTest(5, {1,2,3,4,5,6,7}, 1, 0);
+
+    // Test 6: Target is the last element
+    runTest(6, {1,2,3,4,5,6,7}, 7, 6);
+
     return 0;
 }
