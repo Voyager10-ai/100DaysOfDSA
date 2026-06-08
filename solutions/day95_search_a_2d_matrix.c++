@@ -49,3 +49,33 @@ public:
         return false;
     }
 };
+
+// Helper to run a test case
+void runTest(int id, vector<vector<int>> matrix, int target, bool expected) {
+    Solution sol;
+    bool result = sol.searchMatrix(matrix, target);
+    cout << "Test " << id << ": " << (result == expected ? "PASS" : "FAIL")
+         << " (got " << result << ", expected " << expected << ")" << endl;
+}
+
+int main() {
+    // Test 1: LeetCode Example 1 – target present
+    runTest(1, {{1,3,5,7},{10,11,16,20},{23,30,34,60}}, 3, true);
+
+    // Test 2: LeetCode Example 2 – target not present
+    runTest(2, {{1,3,5,7},{10,11,16,20},{23,30,34,60}}, 13, false);
+
+    // Test 3: Single element matrix – found
+    runTest(3, {{5}}, 5, true);
+
+    // Test 4: Single element matrix – not found
+    runTest(4, {{5}}, 3, false);
+
+    // Test 5: Target is the very first element
+    runTest(5, {{1,3,5},{7,9,11},{13,15,17}}, 1, true);
+
+    // Test 6: Target is the very last element
+    runTest(6, {{1,3,5},{7,9,11},{13,15,17}}, 17, true);
+
+    return 0;
+}
