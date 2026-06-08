@@ -50,6 +50,41 @@ public:
     }
 };
 
+// Alternative approach: Two binary searches (row + column)
+// Step 1: Binary search on the first column to find the correct row.
+// Step 2: Binary search within that row to find the target.
+// Time: O(log m + log n)   Space: O(1)
+class SolutionAlt {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if (matrix.empty() || matrix[0].empty()) return false;
+
+        int m = matrix.size(), n = matrix[0].size();
+
+        // Step 1: find the row where target could be
+        int lo = 0, hi = m - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (matrix[mid][0] <= target && (mid == m - 1 || matrix[mid + 1][0] > target)) {
+                // Step 2: binary search within this row
+                int left = 0, right = n - 1;
+                while (left <= right) {
+                    int c = left + (right - left) / 2;
+                    if (matrix[mid][c] == target) return true;
+                    else if (matrix[mid][c] < target) left = c + 1;
+                    else right = c - 1;
+                }
+                return false;
+            } else if (matrix[mid][0] > target) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return false;
+    }
+};
+
 // Helper to run a test case
 void runTest(int id, vector<vector<int>> matrix, int target, bool expected) {
     Solution sol;
