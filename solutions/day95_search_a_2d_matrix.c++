@@ -77,5 +77,38 @@ int main() {
     // Test 6: Target is the very last element
     runTest(6, {{1,3,5},{7,9,11},{13,15,17}}, 17, true);
 
+    // Test 7: Single row matrix – target found
+    runTest(7, {{2,4,6,8,10}}, 6, true);
+
+    // Test 8: Single row matrix – target not found
+    runTest(8, {{2,4,6,8,10}}, 5, false);
+
+    // Test 9: Single column matrix – target found
+    runTest(9, {{1},{4},{7},{10}}, 7, true);
+
+    // Test 10: Single column matrix – target not found
+    runTest(10, {{1},{4},{7},{10}}, 5, false);
+
+    // Test 11: Target smaller than all elements
+    runTest(11, {{10,20},{30,40}}, 5, false);
+
+    // Test 12: Target larger than all elements
+    runTest(12, {{10,20},{30,40}}, 50, false);
+
+    // Test 13: Empty matrix
+    runTest(13, {}, 1, false);
+
+    // Test 14: 2x2 matrix – target at (1,0)
+    runTest(14, {{1,3},{5,7}}, 5, true);
+
+    // Test 15: Large matrix stress test
+    vector<vector<int>> big(100, vector<int>(100));
+    int val = 1;
+    for (int i = 0; i < 100; ++i)
+        for (int j = 0; j < 100; ++j)
+            big[i][j] = val++;
+    runTest(15, big, 5050, true);   // middle element
+    runTest(16, big, 10001, false); // beyond range
+
     return 0;
 }
