@@ -59,3 +59,59 @@ public:
         return result;
     }
 };
+
+// Helper to check a get() result
+int testNum = 0;
+void check(const string& result, const string& expected, const string& desc) {
+    ++testNum;
+    bool pass = (result == expected);
+    cout << "Test " << testNum << ": " << (pass ? "PASS" : "FAIL")
+         << " — " << desc
+         << " (got \"" << result << "\", expected \"" << expected << "\")" << endl;
+}
+
+int main() {
+    // ---- LeetCode Example 1 ----
+    {
+        TimeMap tm;
+        tm.set("foo", "bar", 1);
+
+        check(tm.get("foo", 1), "bar",
+              "get foo at exact timestamp 1");
+
+        check(tm.get("foo", 3), "bar",
+              "get foo at timestamp 3 (returns latest <= 3)");
+
+        tm.set("foo", "bar2", 4);
+
+        check(tm.get("foo", 4), "bar2",
+              "get foo at exact timestamp 4");
+
+        check(tm.get("foo", 5), "bar2",
+              "get foo at timestamp 5 (returns latest <= 5)");
+    }
+
+    // ---- LeetCode Example 2: query before any set ----
+    {
+        TimeMap tm;
+        tm.set("love", "high", 10);
+        tm.set("love", "low", 20);
+
+        check(tm.get("love", 5), "",
+              "get before any timestamp returns empty");
+
+        check(tm.get("love", 10), "high",
+              "get at exact first timestamp");
+
+        check(tm.get("love", 15), "high",
+              "get between two timestamps");
+
+        check(tm.get("love", 20), "low",
+              "get at exact second timestamp");
+
+        check(tm.get("love", 25), "low",
+              "get after all timestamps");
+    }
+
+    return 0;
+}
