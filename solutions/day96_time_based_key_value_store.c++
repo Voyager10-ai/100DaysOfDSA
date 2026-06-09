@@ -113,5 +113,73 @@ int main() {
               "get after all timestamps");
     }
 
+    // ---- Edge case: key not found ----
+    {
+        TimeMap tm;
+        tm.set("a", "val", 1);
+
+        check(tm.get("b", 1), "",
+              "get nonexistent key returns empty");
+    }
+
+    // ---- Multiple independent keys ----
+    {
+        TimeMap tm;
+        tm.set("x", "x1", 1);
+        tm.set("y", "y1", 2);
+        tm.set("x", "x2", 3);
+        tm.set("y", "y2", 4);
+
+        check(tm.get("x", 2), "x1",
+              "get x at ts 2 returns x1 (before x2)");
+
+        check(tm.get("x", 3), "x2",
+              "get x at exact ts 3 returns x2");
+
+        check(tm.get("y", 3), "y1",
+              "get y at ts 3 returns y1 (before y2)");
+
+        check(tm.get("y", 4), "y2",
+              "get y at exact ts 4 returns y2");
+    }
+
+    // ---- Many timestamps – binary search stress ----
+    {
+        TimeMap tm;
+        for (int i = 1; i <= 1000; ++i) {
+            tm.set("k", "v" + to_string(i), i * 2);  // timestamps 2,4,6,...,2000
+        }
+
+        check(tm.get("k", 1), "",
+              "query before all timestamps in large set");
+
+        check(tm.get("k", 2), "v1",
+              "exact first timestamp in large set");
+
+        check(tm.get("k", 999), "v499",
+              "query between timestamps (999 -> ts 998 = v499)");
+
+        check(tm.get("k", 2000), "v1000",
+              "exact last timestamp in large set");
+
+        check(tm.get("k", 5000), "v1000",
+              "query well beyond last timestamp");
+    }
+
+    // ---- Single set, multiple gets ----
+    {
+        TimeMap tm;
+        tm.set("solo", "only", 100);
+
+        check(tm.get("solo", 50), "",
+              "get before sole timestamp");
+
+        check(tm.get("solo", 100), "only",
+              "get at exact sole timestamp");
+
+        check(tm.get("solo", 200), "only",
+              "get after sole timestamp");
+    }
+
     return 0;
 }
