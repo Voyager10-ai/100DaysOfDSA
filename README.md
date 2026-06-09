@@ -98,3 +98,4 @@ Tracking my consistency and growth in problem solving.
 - Day 93: Critical Connections in a Network
 - Day 94: Binary Search
 - Day 95: Search a 2D Matrix
+- Day 96: Time Based Key-Value Store
