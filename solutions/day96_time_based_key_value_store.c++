@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -57,6 +58,40 @@ public:
         }
 
         return result;
+    }
+};
+
+// Alternative approach: Use STL upper_bound for cleaner code
+// upper_bound finds the first element with timestamp > query, then we step
+// back one position to get the largest timestamp <= query.
+// Time: O(log n) per get   Space: O(total set calls)
+class TimeMapAlt {
+    unordered_map<string, vector<pair<int, string>>> store;
+
+public:
+    TimeMapAlt() {}
+
+    void set(string key, string value, int timestamp) {
+        store[key].push_back({timestamp, value});
+    }
+
+    string get(string key, int timestamp) {
+        auto it = store.find(key);
+        if (it == store.end()) return "";
+
+        const auto& entries = it->second;
+        // upper_bound returns iterator to first entry with ts > timestamp
+        auto ub = upper_bound(
+            entries.begin(), entries.end(),
+            make_pair(timestamp, string(127, '~')),  // sentinel: max possible value at this ts
+            [](const pair<int, string>& a, const pair<int, string>& b) {
+                return a.first < b.first;
+            }
+        );
+
+        if (ub == entries.begin()) return "";  // all timestamps > query
+        --ub;
+        return ub->second;
     }
 };
 
