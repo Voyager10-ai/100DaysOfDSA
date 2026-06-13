@@ -99,3 +99,100 @@ public:
     }
 };
 
+int testNum = 0;
+void check(double gotOpt, double gotAlt, double expected, const string& desc) {
+    ++testNum;
+    bool passOpt = (abs(gotOpt - expected) < 1e-6);
+    bool passAlt = (abs(gotAlt - expected) < 1e-6);
+    bool pass = passOpt && passAlt;
+    
+    cout << "Test " << testNum << ": " << (pass ? "PASS" : "FAIL")
+         << " - " << desc << endl;
+    if (!passOpt) {
+        cout << "  -> Optimal failed: got " << gotOpt << ", expected " << expected << endl;
+    }
+    if (!passAlt) {
+        cout << "  -> Alt failed: got " << gotAlt << ", expected " << expected << endl;
+    }
+}
+
+int main() {
+    Solution solver;
+    SolutionAlt solverAlt;
+    
+    // Test 1: Odd total length, simple overlapping
+    {
+        vector<int> n1 = {1, 3};
+        vector<int> n2 = {2};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              2.0, "Odd total length: nums1=[1,3], nums2=[2]");
+    }
+    
+    // Test 2: Even total length, simple disjoint
+    {
+        vector<int> n1 = {1, 2};
+        vector<int> n2 = {3, 4};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              2.5, "Even total length: nums1=[1,2], nums2=[3,4]");
+    }
+    
+    // Test 3: Empty first array, odd length
+    {
+        vector<int> n1 = {};
+        vector<int> n2 = {1};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              1.0, "Empty first array: nums1=[], nums2=[1]");
+    }
+    
+    // Test 4: Empty second array, even length
+    {
+        vector<int> n1 = {2, 3};
+        vector<int> n2 = {};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              2.5, "Empty second array: nums1=[2,3], nums2=[]");
+    }
+    
+    // Test 5: Single element arrays
+    {
+        vector<int> n1 = {1};
+        vector<int> n2 = {2};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              1.5, "Single element arrays: nums1=[1], nums2=[2]");
+    }
+    
+    // Test 6: Fully disjoint / non-overlapping arrays
+    {
+        vector<int> n1 = {1, 2, 3};
+        vector<int> n2 = {4, 5, 6};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              3.5, "Disjoint arrays: nums1=[1,2,3], nums2=[4,5,6]");
+    }
+    
+    // Test 7: Alternating elements (interleaved)
+    {
+        vector<int> n1 = {1, 5, 9};
+        vector<int> n2 = {2, 6, 10};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              5.5, "Interleaved arrays: nums1=[1,5,9], nums2=[2,6,10]");
+    }
+    
+    // Test 8: Multiple duplicate elements
+    {
+        vector<int> n1 = {1, 2};
+        vector<int> n2 = {1, 2, 3};
+        check(solver.findMedianSortedArrays(n1, n2),
+              solverAlt.findMedianSortedArrays(n1, n2),
+              2.0, "Duplicate elements: nums1=[1,2], nums2=[1,2,3]");
+    }
+
+    return 0;
+}
+
+
