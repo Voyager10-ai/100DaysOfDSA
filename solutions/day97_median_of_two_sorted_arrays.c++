@@ -53,7 +53,26 @@ public:
 };
 
 // Optimal approach: Binary Search on the smaller array
-// Time: O(log(min(m, n))), Space: O(1)
+//
+// Algorithm:
+//   1. To find the median, we partition both arrays into left and right halves.
+//      Total elements in the left half = (m + n + 1) / 2.
+//   2. We perform binary search on the smaller array (nums1) to find partition index `i`.
+//      Consequently, the partition index in nums2 is `j = (m + n + 1) / 2 - i`.
+//   3. Let:
+//      - left1 = max element in left half of nums1 (nums1[i-1] or INT_MIN if empty)
+//      - right1 = min element in right half of nums1 (nums1[i] or INT_MAX if empty)
+//      - left2 = max element in left half of nums2 (nums2[j-1] or INT_MIN if empty)
+//      - right2 = min element in right half of nums2 (nums2[j] or INT_MAX if empty)
+//   4. A valid partition satisfies: left1 <= right2 AND left2 <= right1.
+//      - If left1 > right2, we partitioned too far right in nums1, so we move left: hi = i - 1.
+//      - If left2 > right1, we partitioned too far left in nums1, so we move right: lo = i + 1.
+//   5. Once a valid partition is found:
+//      - If total elements (m+n) is odd, median is max(left1, left2).
+//      - If even, median is (max(left1, left2) + min(right1, right2)) / 2.0.
+//
+// Time Complexity: O(log(min(m, n))) — binary search is run on the smaller array.
+// Space Complexity: O(1) — only pointers/variables are used.
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
