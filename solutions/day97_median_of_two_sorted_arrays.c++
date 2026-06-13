@@ -51,3 +51,51 @@ public:
         }
     }
 };
+
+// Optimal approach: Binary Search on the smaller array
+// Time: O(log(min(m, n))), Space: O(1)
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        // Ensure nums1 is the smaller array to do binary search on.
+        if (nums1.size() > nums2.size()) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        
+        int m = nums1.size();
+        int n = nums2.size();
+        
+        int lo = 0;
+        int hi = m;
+        int half_len = (m + n + 1) / 2;
+        
+        while (lo <= hi) {
+            int i = lo + (hi - lo) / 2;
+            int j = half_len - i;
+            
+            int left1 = (i == 0) ? INT_MIN : nums1[i - 1];
+            int right1 = (i == m) ? INT_MAX : nums1[i];
+            
+            int left2 = (j == 0) ? INT_MIN : nums2[j - 1];
+            int right2 = (j == n) ? INT_MAX : nums2[j];
+            
+            if (left1 <= right2 && left2 <= right1) {
+                // Perfect partition found
+                if ((m + n) % 2 == 1) {
+                    return max(left1, left2);
+                } else {
+                    return (max(left1, left2) + min(right1, right2)) / 2.0;
+                }
+            } else if (left1 > right2) {
+                // i is too big, move left
+                hi = i - 1;
+            } else {
+                // i is too small, move right
+                lo = i + 1;
+            }
+        }
+        
+        return 0.0;
+    }
+};
+
