@@ -115,14 +115,64 @@ int main() {
     Solution solver;
     SolutionAlt solverAlt;
     
-    // Test 1: Simple case
+    // Test 1: Standard case (LeetCode Example 1)
     {
         vector<int> piles = {3, 6, 7, 11};
         int h = 8;
-        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 4, "piles=[3,6,7,11], h=8");
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 4, "Example 1: piles=[3,6,7,11], h=8");
+    }
+    
+    // Test 2: Standard case (LeetCode Example 2)
+    {
+        vector<int> piles = {30, 11, 23, 4, 20};
+        int h = 5;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 30, "Example 2: piles=[30,11,23,4,20], h=5");
+    }
+    
+    // Test 3: Standard case (LeetCode Example 3)
+    {
+        vector<int> piles = {30, 11, 23, 4, 20};
+        int h = 6;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 23, "Example 3: piles=[30,11,23,4,20], h=6");
+    }
+    
+    // Test 4: Single element, speed = 1
+    {
+        vector<int> piles = {30};
+        int h = 30;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 1, "Single pile, h equals pile size: piles=[30], h=30");
+    }
+    
+    // Test 5: Single element, speed > 1
+    {
+        vector<int> piles = {30};
+        int h = 15;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 2, "Single pile, h half of pile size: piles=[30], h=15");
+    }
+    
+    // Test 6: h equals total sum of piles, speed should be 1
+    {
+        vector<int> piles = {3, 6, 7, 11};
+        int h = 27;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 1, "h equals sum of piles: piles=[3,6,7,11], h=27");
+    }
+    
+    // Test 7: Large h compared to piles, speed should be 1
+    {
+        vector<int> piles = {3, 6, 7, 11};
+        int h = 10000;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 1, "Large h: piles=[3,6,7,11], h=10000");
+    }
+    
+    // Test 8: Large pile elements (within bounds for linear search to complete quickly)
+    {
+        vector<int> piles = {10000};
+        int h = 5000;
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 2, "Larger pile elements: piles=[10000], h=5000");
     }
     
     return 0;
 }
+
 
 
