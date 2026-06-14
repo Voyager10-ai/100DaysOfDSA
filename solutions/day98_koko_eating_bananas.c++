@@ -38,8 +38,22 @@ using namespace std;
 class SolutionAlt {
 public:
     int minEatingSpeed(vector<int>& piles, int h) {
-        // Stub implementation
-        return -1;
+        int max_pile = 0;
+        for (int p : piles) {
+            max_pile = max(max_pile, p);
+        }
+        
+        for (int k = 1; k <= max_pile; ++k) {
+            long long hours_needed = 0;
+            for (int p : piles) {
+                // Ceiling division: (p + k - 1) / k
+                hours_needed += (static_cast<long long>(p) + k - 1) / k;
+            }
+            if (hours_needed <= h) {
+                return k;
+            }
+        }
+        return max_pile;
     }
 };
 
@@ -51,7 +65,31 @@ public:
     }
 };
 
+int testNum = 0;
+void check(int gotOpt, int gotAlt, int expected, const string& desc) {
+    ++testNum;
+    bool passAlt = (gotAlt == expected);
+    // Note: optimal (gotOpt) is not implemented yet so we only check passAlt for now
+    bool pass = passAlt;
+    
+    cout << "Test " << testNum << ": " << (pass ? "PASS" : "FAIL")
+         << " - " << desc << endl;
+    if (!passAlt) {
+        cout << "  -> Alt failed: got " << gotAlt << ", expected " << expected << endl;
+    }
+}
+
 int main() {
-    cout << "Day 98: Koko Eating Bananas - Initial Skeleton" << endl;
+    Solution solver;
+    SolutionAlt solverAlt;
+    
+    // Test 1: Simple case
+    {
+        vector<int> piles = {3, 6, 7, 11};
+        int h = 8;
+        check(-1, solverAlt.minEatingSpeed(piles, h), 4, "piles=[3,6,7,11], h=8");
+    }
+    
     return 0;
 }
+
