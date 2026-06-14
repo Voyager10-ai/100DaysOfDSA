@@ -57,23 +57,55 @@ public:
     }
 };
 
+// Optimal approach: Binary Search on the eating speed
+// We know the speed k is in range [1, max(piles)].
+// Since the hours needed monotonically decreases as k increases, we can perform binary search on k.
+// Time Complexity: O(N * log(max(piles))) where N is piles.size().
+// Space Complexity: O(1)
 class Solution {
+private:
+    bool canEatAll(const vector<int>& piles, int h, int k) {
+        long long hours = 0;
+        for (int p : piles) {
+            hours += (static_cast<long long>(p) + k - 1) / k; // ceil(p / k)
+        }
+        return hours <= h;
+    }
+
 public:
     int minEatingSpeed(vector<int>& piles, int h) {
-        // Stub implementation
-        return -1;
+        int lo = 1;
+        int hi = 0;
+        for (int p : piles) {
+            hi = max(hi, p);
+        }
+        
+        int ans = hi;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (canEatAll(piles, h, mid)) {
+                ans = mid;
+                hi = mid - 1; // Try to find a smaller speed
+            } else {
+                lo = mid + 1; // Need a faster speed
+            }
+        }
+        return ans;
     }
 };
 
 int testNum = 0;
 void check(int gotOpt, int gotAlt, int expected, const string& desc) {
     ++testNum;
+    bool passOpt = (gotOpt == expected);
     bool passAlt = (gotAlt == expected);
-    // Note: optimal (gotOpt) is not implemented yet so we only check passAlt for now
-    bool pass = passAlt;
+    bool pass = passOpt && passAlt;
     
     cout << "Test " << testNum << ": " << (pass ? "PASS" : "FAIL")
          << " - " << desc << endl;
+    if (!passOpt) {
+        cout << "  -> Optimal failed: got " << gotOpt << ", expected " << expected << endl;
+    }
     if (!passAlt) {
         cout << "  -> Alt failed: got " << gotAlt << ", expected " << expected << endl;
     }
@@ -87,9 +119,10 @@ int main() {
     {
         vector<int> piles = {3, 6, 7, 11};
         int h = 8;
-        check(-1, solverAlt.minEatingSpeed(piles, h), 4, "piles=[3,6,7,11], h=8");
+        check(solver.minEatingSpeed(piles, h), solverAlt.minEatingSpeed(piles, h), 4, "piles=[3,6,7,11], h=8");
     }
     
     return 0;
 }
+
 
