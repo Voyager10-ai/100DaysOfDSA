@@ -100,3 +100,5 @@ Tracking my consistency and growth in problem solving.
 - Day 95: Search a 2D Matrix
 - Day 96: Time Based Key-Value Store
 - Day 97: Median of Two Sorted Arrays
+- Day 98: Koko Eating Bananas
+
