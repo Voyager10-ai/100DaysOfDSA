@@ -74,6 +74,56 @@ public:
 };
 
 
+int testNum = 0;
+void check(int gotOpt, int gotAlt, int expected, const string& desc) {
+    ++testNum;
+    bool passOpt = (gotOpt == expected);
+    bool passAlt = (gotAlt == expected);
+    bool pass = passOpt && passAlt;
+
+    cout << "Test " << testNum << ": " << (pass ? "PASS" : "FAIL")
+         << " - " << desc << endl;
+    if (!passOpt) {
+        cout << "  -> Optimal failed: got " << gotOpt << ", expected " << expected << endl;
+    }
+    if (!passAlt) {
+        cout << "  -> Alt failed: got " << gotAlt << ", expected " << expected << endl;
+    }
+}
+
 int main() {
+    Solution solver;
+    SolutionAlt solverAlt;
+
+    // Test 1: LeetCode Example 1
+    {
+        vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 6, "Example 1: nums=[-2,1,-3,4,-1,2,1,-5,4]");
+    }
+
+    // Test 2: LeetCode Example 2 – single element
+    {
+        vector<int> nums = {1};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 1, "Example 2: nums=[1]");
+    }
+
+    // Test 3: LeetCode Example 3 – all positive
+    {
+        vector<int> nums = {5, 4, -1, 7, 8};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 23, "Example 3: nums=[5,4,-1,7,8]");
+    }
+
+    // Test 4: All negative numbers
+    {
+        vector<int> nums = {-3, -5, -1, -7};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), -1, "All negatives: nums=[-3,-5,-1,-7]");
+    }
+
+    // Test 5: All positive numbers – entire array is the answer
+    {
+        vector<int> nums = {1, 2, 3, 4};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 10, "All positives: nums=[1,2,3,4]");
+    }
+
     return 0;
 }
