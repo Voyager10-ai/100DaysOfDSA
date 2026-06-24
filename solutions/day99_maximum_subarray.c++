@@ -51,6 +51,29 @@ public:
 };
 
 
+// Optimal approach: Kadane's Algorithm (Dynamic Programming)
+// At each index, decide whether to extend the previous subarray or start fresh.
+// current_sum = max(nums[i], current_sum + nums[i])
+// Track the global maximum across all positions.
+// Time Complexity: O(N) where N is nums.size().
+// Space Complexity: O(1)
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxSum = nums[0];
+        int currentSum = nums[0];
+
+        for (int i = 1; i < (int)nums.size(); ++i) {
+            // Either extend the existing subarray or start a new one at i
+            currentSum = max(nums[i], currentSum + nums[i]);
+            maxSum = max(maxSum, currentSum);
+        }
+
+        return maxSum;
+    }
+};
+
+
 int main() {
     return 0;
 }
