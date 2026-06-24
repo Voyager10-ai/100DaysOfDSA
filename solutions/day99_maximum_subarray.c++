@@ -27,6 +27,30 @@ using namespace std;
 //   Output: 23
 
 
+// Brute-force approach: Check all subarrays
+// For every starting index i, extend the subarray to every ending index j >= i,
+// keeping a running sum and tracking the maximum.
+// Time Complexity: O(N^2) where N is nums.size().
+// Space Complexity: O(1)
+class SolutionAlt {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        int maxSum = INT_MIN;
+
+        for (int i = 0; i < n; ++i) {
+            int currentSum = 0;
+            for (int j = i; j < n; ++j) {
+                currentSum += nums[j];
+                maxSum = max(maxSum, currentSum);
+            }
+        }
+
+        return maxSum;
+    }
+};
+
+
 int main() {
     return 0;
 }
