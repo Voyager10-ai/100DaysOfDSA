@@ -125,5 +125,23 @@ int main() {
         check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 10, "All positives: nums=[1,2,3,4]");
     }
 
+    // Test 6: Single negative element
+    {
+        vector<int> nums = {-1};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), -1, "Single negative: nums=[-1]");
+    }
+
+    // Test 7: Alternating positive and negative
+    {
+        vector<int> nums = {2, -1, 2, -1, 2};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 4, "Alternating: nums=[2,-1,2,-1,2]");
+    }
+
+    // Test 8: Large negatives surrounding a positive cluster
+    {
+        vector<int> nums = {-100, 3, 5, -2, 8, -100};
+        check(solver.maxSubArray(nums), solverAlt.maxSubArray(nums), 14, "Bookended negatives: nums=[-100,3,5,-2,8,-100]");
+    }
+
     return 0;
 }
